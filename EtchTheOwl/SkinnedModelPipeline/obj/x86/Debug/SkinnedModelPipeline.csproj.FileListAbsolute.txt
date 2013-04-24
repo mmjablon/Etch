@@ -1,0 +1,14 @@
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojResolveAssemblyReference.cache
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Megan\Downloads\SkinningSample_4_0\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojResolveAssemblyReference.cache
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
