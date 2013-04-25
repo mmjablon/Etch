@@ -514,7 +514,7 @@ namespace EtchTheOwl
                 case GameState.Settings:
                     spriteBatch.Begin();
 
-                     title = "Controls";
+                     title = "Settings";
 
                         if (fullscreen)
                             stringOne = "Fullscreen: On";

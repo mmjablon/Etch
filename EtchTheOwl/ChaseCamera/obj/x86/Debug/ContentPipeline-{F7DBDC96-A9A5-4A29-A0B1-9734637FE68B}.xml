@@ -326,7 +326,7 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Parameters>
-        <Data Key="Scale">20</Data>
+        <Data Key="Scale">25</Data>
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EndTree.xnb</Output>

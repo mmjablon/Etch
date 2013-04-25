@@ -26,6 +26,7 @@ namespace EtchTheOwl
         #region Fields
 
         private const float MinimumAltitude = 350.0f;
+        private const float MaximumAltitude = 700.0f;
 
         /// <summary>
         /// A reference to the graphics device used to access the viewport for touch input.
@@ -106,7 +107,7 @@ namespace EtchTheOwl
         {
             graphicsDevice = device;
             this.camera = camera;
-            this.maxX = maxX - 2500;
+            this.maxX = maxX - (int) (maxX * .4);
 
             controller = Controls.Keys;
 
@@ -141,8 +142,7 @@ namespace EtchTheOwl
             Velocity = Vector3.Zero;
             reset = true;
             resetTime = 1;
-
-            animationPlayer.StartClip(startClip);
+            animationPlayer.Update(new TimeSpan(0, 0, 0), false, Matrix.Identity);
         }
 
         public void ResetComplete()
@@ -153,8 +153,6 @@ namespace EtchTheOwl
             right = Vector3.Right;
             Velocity = Vector3.Zero;
             rotateAlongZ(-ZRotation);
-
-            animationPlayer.StartClip(startClip);
         }
 
         #endregion
