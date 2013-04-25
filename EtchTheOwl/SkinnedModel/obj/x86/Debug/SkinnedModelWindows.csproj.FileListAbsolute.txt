@@ -10,3 +10,9 @@ C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Frame
 C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
 C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
 C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csprojResolveAssemblyReference.cache
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModel\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModel\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModel\obj\x86\Debug\SkinnedModelWindows.csprojResolveAssemblyReference.cache
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModel\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModel\obj\x86\Debug\SkinnedModel.dll
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModel\obj\x86\Debug\SkinnedModel.pdb
