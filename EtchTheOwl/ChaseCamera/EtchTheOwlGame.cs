@@ -56,6 +56,11 @@ namespace EtchTheOwl
         int numMenuStates = 3;
         int controlMenuState;
         int numControlStates = 3;
+        int settingsMenuState;
+        int numSettingsStates = 3;
+
+        bool fullscreen;
+        bool toggleFullscreen;
 
         #endregion
 
@@ -71,10 +76,13 @@ namespace EtchTheOwl
 
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 600;
-            //graphics.IsFullScreen = true;
+            fullscreen = false;
+            graphics.IsFullScreen = fullscreen;
 
             currentGameState = GameState.Start;
             mainMenuState = 0;
+            controlMenuState = 0;
+            settingsMenuState = 0;
         }
 
 
@@ -130,7 +138,7 @@ namespace EtchTheOwl
             {
                 case GameState.Start:
                     if ((currentKeyboardState.IsKeyDown(Keys.Enter) && previousKeyboardState.IsKeyUp(Keys.Enter))
-                        || (currentGamePadState.Buttons.Start == ButtonState.Pressed && previousGamePadState.Buttons.Start == ButtonState.Released))
+                        || (currentGamePadState.Buttons.A == ButtonState.Pressed && previousGamePadState.Buttons.A == ButtonState.Released))
                     {
                         if (mainMenuState == 0)
                         {
@@ -144,10 +152,10 @@ namespace EtchTheOwl
                         }
                         else
                         {
-                            //go into settings
+                            currentGameState = GameState.Settings;
                         }
                     }
-                    if ((currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)) || (currentGamePadState.ThumbSticks.Left.Y <= 0 && previousGamePadState.ThumbSticks.Left.Y > 0 ))
+                    if ((currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)) || (currentGamePadState.ThumbSticks.Left.Y >= 0 && previousGamePadState.ThumbSticks.Left.Y < 0 ))
                     {
                         if (mainMenuState < numMenuStates - 1)
                         {
@@ -156,7 +164,7 @@ namespace EtchTheOwl
                         }
                     }
 
-                    if ((currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)) || (currentGamePadState.ThumbSticks.Left.Y >= 0 && previousGamePadState.ThumbSticks.Left.Y < 0))
+                    if ((currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)) || (currentGamePadState.ThumbSticks.Left.Y <= 0 && previousGamePadState.ThumbSticks.Left.Y > 0))
                     {
                         if (mainMenuState > 0)
                         {
@@ -169,7 +177,7 @@ namespace EtchTheOwl
 
                 case GameState.Controls:
                     if ((currentKeyboardState.IsKeyDown(Keys.Enter) && previousKeyboardState.IsKeyUp(Keys.Enter))
-                        || (currentGamePadState.Buttons.Start == ButtonState.Pressed && previousGamePadState.Buttons.Start == ButtonState.Released))
+                        || (currentGamePadState.Buttons.A == ButtonState.Pressed && previousGamePadState.Buttons.A == ButtonState.Released))
                     {
                         if (controlMenuState == 0)
                         {
@@ -220,7 +228,7 @@ namespace EtchTheOwl
                         }
                     }
 
-                  if ((currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)) || (currentGamePadState.ThumbSticks.Left.Y <= 0 && previousGamePadState.ThumbSticks.Left.Y > 0 ))
+                  if ((currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)) || (currentGamePadState.ThumbSticks.Left.Y >= 0 && previousGamePadState.ThumbSticks.Left.Y < 0 ))
                     {
                         if (controlMenuState < numControlStates - 1)
                         {
@@ -229,7 +237,7 @@ namespace EtchTheOwl
                         }
                     }
 
-                    if ((currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)) || (currentGamePadState.ThumbSticks.Left.Y >= 0 && previousGamePadState.ThumbSticks.Left.Y < 0))
+                    if ((currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)) || (currentGamePadState.ThumbSticks.Left.Y <= 0 && previousGamePadState.ThumbSticks.Left.Y > 0))
                     {
                         if (controlMenuState > 0)
                         {
@@ -239,6 +247,46 @@ namespace EtchTheOwl
                     }
                     break;
 
+
+                case GameState.Settings:
+                    if ((currentKeyboardState.IsKeyDown(Keys.Enter) && previousKeyboardState.IsKeyUp(Keys.Enter))
+                        || (currentGamePadState.Buttons.A == ButtonState.Pressed && previousGamePadState.Buttons.A == ButtonState.Released))
+                    {
+                        if (settingsMenuState == 0)
+                        {
+                            fullscreen = !fullscreen;
+                            toggleFullscreen = true;
+                        }
+                        else if (settingsMenuState == 1)
+                        {
+                            
+                        }
+                        else
+                        {
+                            //go  back
+                            currentGameState = GameState.Start;
+                            settingsMenuState = 0;
+                        }
+                    }
+
+                  if ((currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)) || (currentGamePadState.ThumbSticks.Left.Y >= 0 && previousGamePadState.ThumbSticks.Left.Y < 0 ))
+                    {
+                        if (settingsMenuState < numSettingsStates - 1)
+                        {
+                            settingsMenuState++;
+                            beepDown.Play();
+                        }
+                    }
+
+                  if ((currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)) || (currentGamePadState.ThumbSticks.Left.Y <= 0 && previousGamePadState.ThumbSticks.Left.Y > 0))
+                  {
+                      if (settingsMenuState > 0)
+                      {
+                          settingsMenuState--;
+                          beepUp.Play();
+                      }
+                  }
+                    break;
 
                 case GameState.InGame:
 
@@ -265,6 +313,11 @@ namespace EtchTheOwl
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice device = graphics.GraphicsDevice;
+            if (toggleFullscreen)
+            {
+                graphics.ToggleFullScreen();
+                toggleFullscreen = false;
+            }
             device.Clear(Color.Black);
 
             GraphicsDevice.BlendState = BlendState.Opaque;
@@ -351,7 +404,7 @@ namespace EtchTheOwl
                     if (singlePlayer)
                     {
 
-                        title = "Etch The Owl";
+                        title = "Controls";
                         stringOne = "Keyboard";
                         stringTwo = "Controller";
                         stringThree = "Back";
@@ -395,7 +448,7 @@ namespace EtchTheOwl
                     }
                     else
                     {
-                        title = "Etch The Owl";
+                        title = "Controls";
                         stringOne = "Player1: Keyboard\nPlayer2: Controller\n";
                         stringTwo = "Player1: Controller\nPlayer2: Controller\n";
                         stringThree = "Back";
@@ -459,7 +512,56 @@ namespace EtchTheOwl
                     spriteBatch.End();
                     break;
                 case GameState.Settings:
+                    spriteBatch.Begin();
 
+                     title = "Controls";
+
+                        if (fullscreen)
+                            stringOne = "Fullscreen: On";
+                        else
+                            stringOne = "Fullscreen: Off";
+
+                        stringTwo = "--";
+                        stringThree = "Back";
+                        menuFont = spriteFont;
+                        startHeight = 100;
+
+                    // Draw the string twice to create a drop shadow, first colored black
+                    // and offset one pixel to the bottom right, then again in white at the
+                    // intended position. This makes text easier to read over the background.
+                    spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2) - 3,
+                        startHeight-3), Color.Black);
+                    spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2),
+                        startHeight), Color.White);
+
+                    if (settingsMenuState == 0)
+                    {
+                        stringOneColor = Color.Green;
+                    }
+                    else if (settingsMenuState == 1)
+                    {
+                        stringTwoColor = Color.Green;
+                    }
+                    else
+                    {
+                        stringThreeColor = Color.Green;
+                    }
+                    spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2) - 2,
+                        startHeight + titleFont.MeasureString(title).Y - 2), Color.Black);
+                    spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2),
+                        startHeight + titleFont.MeasureString(title).Y), stringOneColor);
+
+                    spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2) - 2,
+                        startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                    spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2),
+                        startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y), stringTwoColor);
+
+                    spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2) - 2,
+                        startHeight + titleFont.MeasureString(title).Y + 2 *  menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                    spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2),
+                        startHeight + titleFont.MeasureString(title).Y + 2* menuFont.MeasureString(stringOne).Y), stringThreeColor);
+
+                    spriteBatch.End();
                     break;
                 case GameState.End:
 

@@ -22,11 +22,6 @@ namespace EtchTheOwl
             return model;
         }
 
-        public void update()
-        {
-
-        }
-
 
         /// <summary>
         /// Simple model drawing method. The interesting part here is that

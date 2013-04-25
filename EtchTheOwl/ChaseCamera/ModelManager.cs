@@ -336,7 +336,7 @@ namespace EtchTheOwl
                 groundSecondary.DrawModel(camera2);
             }
 
-            GraphicsDevice.Viewport = defaultViewport;
+            //GraphicsDevice.Viewport = defaultViewport;
 
             base.Draw(gameTime);
         }
