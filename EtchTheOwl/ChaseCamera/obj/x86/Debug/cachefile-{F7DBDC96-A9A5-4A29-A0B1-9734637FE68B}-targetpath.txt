@@ -18,3 +18,4 @@ Content\Textures\fly.xnb
 Content\Textures\grass_0.xnb
 Content\Textures\Etch_0.xnb
 Content\Textures\Crepusculo_0.xnb
+Content\Models\EndTree.xnb

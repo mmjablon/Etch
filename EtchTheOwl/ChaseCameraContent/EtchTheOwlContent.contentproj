@@ -43,6 +43,12 @@
       <Processor>ModelProcessor</Processor>
       <ProcessorParameters_Scale>10</ProcessorParameters_Scale>
     </Compile>
+    <Compile Include="Models\EndTree.fbx">
+      <Name>EndTree</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_Scale>30</ProcessorParameters_Scale>
+    </Compile>
     <None Include="Models\Etch.fbx">
       <Name>Etch</Name>
       <Importer>FbxImporter</Importer>

@@ -313,6 +313,29 @@
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Fly_0.xml</Output>
       <Time>2013-04-23T14:11:31.0856694-05:00</Time>
     </Item>
+    <Item>
+      <Source>Models\EndTree.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EndTree_0.xml</Output>
+      <Time>2013-04-24T20:28:59.5102105-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\EndTree.fbx</Source>
+      <Name>Models\EndTree</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">30</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EndTree.xnb</Output>
+      <Time>2013-04-24T20:28:59.5102105-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EndTree_0.xml</Key>
+        <Value>2013-04-24T20:29:03.6599531-05:00</Value>
+      </Dependency>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{F7DBDC96-A9A5-4A29-A0B1-9734637FE68B}</ContentProjectGUID>
