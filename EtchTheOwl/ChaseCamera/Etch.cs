@@ -106,7 +106,7 @@ namespace EtchTheOwl
         {
             graphicsDevice = device;
             this.camera = camera;
-            this.maxX = maxX;
+            this.maxX = maxX - 2500;
 
             controller = Controls.Keys;
 
@@ -236,7 +236,7 @@ namespace EtchTheOwl
 
                         if (gamePadState.Buttons.A == ButtonState.Pressed)
                             jump = true;
-                        if(gamePadState.Triggers.Right > 0)
+                        if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
                             thrust = true;
 
                         break;
@@ -252,7 +252,7 @@ namespace EtchTheOwl
                         if (gamePadState.Buttons.A == ButtonState.Pressed)
                             jump = true;
 
-                        if (gamePadState.Triggers.Right > 0)
+                        if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
                             thrust = true;
 
                         break;

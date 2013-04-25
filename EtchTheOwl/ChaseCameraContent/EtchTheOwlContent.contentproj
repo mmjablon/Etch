@@ -47,6 +47,7 @@
       <Name>EndTree</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_Scale>25</ProcessorParameters_Scale>
     </Compile>
     <None Include="Models\Etch.fbx">
       <Name>Etch</Name>

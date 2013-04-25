@@ -7,8 +7,17 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\gameFont.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\gameFont.xnb</Output>
       <Time>2013-04-22T22:37:46.3263858-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\titleFont.spritefont</Source>
+      <Name>Fonts\titleFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\titleFont.xnb</Output>
+      <Time>2013-04-22T22:45:51.4065407-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Ground.x</Source>
@@ -16,13 +25,29 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Ground.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Ground.xnb</Output>
       <Time>2013-04-03T23:10:16-05:00</Time>
       <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Ground_0.xml</Key>
-        <Value>2013-04-24T18:58:19.3470844-05:00</Value>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Ground_0.xml</Key>
+        <Value>2013-04-25T01:00:23.4587813-05:00</Value>
       </Dependency>
-      <Request>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\grass_0.xnb</Request>
+      <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\grass_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\FlyCount.fbx</Source>
+      <Name>Models\FlyCount</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">10</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\FlyCount.xnb</Output>
+      <Time>2013-04-23T14:15:54.0882067-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\FlyCount_0.xml</Key>
+        <Value>2013-04-25T01:00:24.4449835-05:00</Value>
+      </Dependency>
     </Item>
     <Item>
       <Source>Models\Tree.fbx</Source>
@@ -35,18 +60,160 @@
         <Data Key="RotationY">180</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Tree.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Tree.xnb</Output>
       <Time>2013-04-04T03:37:08-05:00</Time>
       <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Tree_0.xml</Key>
-        <Value>2013-04-24T18:58:20.2840023-05:00</Value>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Tree_0.xml</Key>
+        <Value>2013-04-25T01:00:25.300783-05:00</Value>
       </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\EtchAnimated.fbx</Source>
+      <Name>Models\EtchAnimated</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">8</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EtchAnimated.xnb</Output>
+      <Time>2013-04-16T20:56:52.3717152-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EtchAnimated_0.xml</Key>
+        <Value>2013-04-25T01:00:27.9297812-05:00</Value>
+      </Dependency>
+      <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\untitled.fbx</Source>
+      <Name>Models\untitled</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="RotationX">-90</Data>
+        <Data Key="Scale">2</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\untitled.xnb</Output>
+      <Time>2013-04-22T00:56:04.9401223-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\untitled_0.xml</Key>
+        <Value>2013-04-25T01:00:30.6357868-05:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\bush.fbx</Source>
+      <Name>Models\bush</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="RotationX">-90</Data>
+        <Data Key="Scale">2</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\bush.xnb</Output>
+      <Time>2013-04-23T00:02:10.0408875-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\bush_0.xml</Key>
+        <Value>2013-04-25T01:00:33.0597934-05:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\Enemy.fbx</Source>
+      <Name>Models\Enemy</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">100</Data>
+        <Data Key="RotationX">-90</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Enemy.xnb</Output>
+      <Time>2013-04-22T21:27:37.6784292-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Enemy_0.xml</Key>
+        <Value>2013-04-25T01:00:33.4767771-05:00</Value>
+      </Dependency>
+      <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Crepusculo_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Fly.fbx</Source>
+      <Name>Models\Fly</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">10</Data>
+        <Data Key="RotationX">-90</Data>
+        <Data Key="RotationY">-90</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Fly.xnb</Output>
+      <Time>2013-04-23T14:11:31.0856694-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Fly_0.xml</Key>
+        <Value>2013-04-25T01:00:34.8177803-05:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Audio\Departure.mp3</Source>
+      <Name>Audio\Departure</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\Departure.xnb</Output>
+      <Extra>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\Departure.wma</Extra>
+      <Time>2013-04-21T22:40:23.4601136-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\wind.wav</Source>
+      <Name>Audio\wind</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\wind.xnb</Output>
+      <Time>2013-04-22T01:11:23.1347811-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\vulture.wav</Source>
+      <Name>Audio\vulture</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\vulture.xnb</Output>
+      <Time>2013-04-22T01:11:26.5002865-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\hawk.wav</Source>
+      <Name>Audio\hawk</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\hawk.xnb</Output>
+      <Time>2013-04-22T01:11:29.3167791-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\owl.wav</Source>
+      <Name>Audio\owl</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\owl.xnb</Output>
+      <Time>2013-04-22T01:11:32.279031-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fly.png</Source>
+      <Name>Textures\fly</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\fly.xnb</Output>
+      <Time>2013-04-23T15:18:19.8271858-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Ground.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Ground_0.xml</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Ground_0.xml</Output>
       <Time>2013-04-03T23:10:16-05:00</Time>
     </Item>
     <Item>
@@ -62,21 +229,35 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\grass_0.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\grass_0.xnb</Output>
       <Time>2013-04-03T22:30:42-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\FlyCount.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\FlyCount_0.xml</Output>
+      <Time>2013-04-23T14:15:54.0882067-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\EndTree.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EndTree_0.xml</Output>
+      <Time>2013-04-25T00:54:39.1219886-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Tree.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Tree_0.xml</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Tree_0.xml</Output>
       <Time>2013-04-04T03:37:08-05:00</Time>
     </Item>
     <Item>
       <Source>Models\EtchAnimated.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EtchAnimated_0.xml</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EtchAnimated_0.xml</Output>
       <Time>2013-04-16T20:56:52.3717152-05:00</Time>
     </Item>
     <Item>
@@ -92,95 +273,29 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Output>
       <Time>2013-04-03T22:17:30-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\EtchAnimated.fbx</Source>
-      <Name>Models\EtchAnimated</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-      <Parameters>
-        <Data Key="Scale">8</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EtchAnimated.xnb</Output>
-      <Time>2013-04-16T20:56:52.3717152-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EtchAnimated_0.xml</Key>
-        <Value>2013-04-24T18:58:22.0150168-05:00</Value>
-      </Dependency>
-      <Request>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Audio\Departure.mp3</Source>
-      <Name>Audio\Departure</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\Departure.xnb</Output>
-      <Extra>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\Departure.wma</Extra>
-      <Time>2013-04-21T22:40:23.4601136-05:00</Time>
     </Item>
     <Item>
       <Source>Models\untitled.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\untitled_0.xml</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\untitled_0.xml</Output>
       <Time>2013-04-22T00:56:04.9401223-05:00</Time>
     </Item>
     <Item>
-      <Source>Models\untitled.fbx</Source>
-      <Name>Models\untitled</Name>
+      <Source>Models\bush.fbx</Source>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="RotationX">-90</Data>
-        <Data Key="Scale">2</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\untitled.xnb</Output>
-      <Time>2013-04-22T00:56:04.9401223-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\untitled_0.xml</Key>
-        <Value>2013-04-24T18:58:24.5740168-05:00</Value>
-      </Dependency>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\bush_0.xml</Output>
+      <Time>2013-04-23T00:02:10.0408875-05:00</Time>
     </Item>
     <Item>
-      <Source>Audio\wind.wav</Source>
-      <Name>Audio\wind</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\wind.xnb</Output>
-      <Time>2013-04-22T01:11:23.1347811-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Audio\vulture.wav</Source>
-      <Name>Audio\vulture</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\vulture.xnb</Output>
-      <Time>2013-04-22T01:11:26.5002865-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Audio\hawk.wav</Source>
-      <Name>Audio\hawk</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\hawk.xnb</Output>
-      <Time>2013-04-22T01:11:29.3167791-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Audio\owl.wav</Source>
-      <Name>Audio\owl</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\owl.xnb</Output>
-      <Time>2013-04-22T01:11:32.279031-05:00</Time>
+      <Source>Models\Enemy.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Enemy_0.xml</Output>
+      <Time>2013-04-22T21:27:37.6784292-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\Crepusculo.png</Source>
@@ -195,143 +310,31 @@
         <Data Key="PremultiplyAlpha" Type="bool">true</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Crepusculo_0.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Crepusculo_0.xnb</Output>
       <Time>2013-04-22T21:27:16.1026545-05:00</Time>
     </Item>
     <Item>
-      <Source>Fonts\titleFont.spritefont</Source>
-      <Name>Fonts\titleFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\titleFont.xnb</Output>
-      <Time>2013-04-22T22:45:51.4065407-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\Enemy.fbx</Source>
-      <Name>Models\Enemy</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="Scale">100</Data>
-        <Data Key="RotationX">-90</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Enemy.xnb</Output>
-      <Time>2013-04-22T21:27:37.6784292-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Enemy_0.xml</Key>
-        <Value>2013-04-24T18:58:27.2409983-05:00</Value>
-      </Dependency>
-      <Request>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Crepusculo_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Models\Enemy.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Enemy_0.xml</Output>
-      <Time>2013-04-22T21:27:37.6784292-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\bush.fbx</Source>
-      <Name>Models\bush</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="RotationX">-90</Data>
-        <Data Key="Scale">2</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\bush.xnb</Output>
-      <Time>2013-04-23T00:02:10.0408875-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\bush_0.xml</Key>
-        <Value>2013-04-24T18:58:26.7730113-05:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>Models\bush.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\bush_0.xml</Output>
-      <Time>2013-04-23T00:02:10.0408875-05:00</Time>
-    </Item>
-    <Item>
       <Source>Models\Fly.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Fly_0.xml</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Fly_0.xml</Output>
       <Time>2013-04-23T14:11:31.0856694-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\Fly.fbx</Source>
-      <Name>Models\Fly</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="Scale">10</Data>
-        <Data Key="RotationX">-90</Data>
-        <Data Key="RotationY">-90</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Fly.xnb</Output>
-      <Time>2013-04-23T14:11:31.0856694-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Fly_0.xml</Key>
-        <Value>2013-04-24T18:58:28.1148109-05:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>Models\FlyCount.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\FlyCount_0.xml</Output>
-      <Time>2013-04-23T14:15:54.0882067-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\FlyCount.fbx</Source>
-      <Name>Models\FlyCount</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="Scale">10</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\FlyCount.xnb</Output>
-      <Time>2013-04-23T14:15:54.0882067-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\FlyCount_0.xml</Key>
-        <Value>2013-04-24T18:58:20.1590182-05:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>Textures\fly.png</Source>
-      <Name>Textures\fly</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\fly.xnb</Output>
-      <Time>2013-04-23T15:18:19.8271858-05:00</Time>
     </Item>
     <Item>
       <Source>Models\EndTree.fbx</Source>
       <Name>Models\EndTree</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">20</Data>
+      </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EndTree.xnb</Output>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EndTree.xnb</Output>
       <Time>2013-04-25T00:54:39.1219886-05:00</Time>
       <Dependency>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EndTree_0.xml</Key>
-        <Value>2013-04-25T00:55:39.7575013-05:00</Value>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EndTree_0.xml</Key>
+        <Value>2013-04-25T01:00:24.8937779-05:00</Value>
       </Dependency>
-    </Item>
-    <Item>
-      <Source>Models\EndTree.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EndTree_0.xml</Output>
-      <Time>2013-04-25T00:54:39.1219886-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -340,14 +343,14 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCameraContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Megan\Desktop\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCameraContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Users\Megan\Desktop\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll</Key>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll</Key>
         <Value>2013-04-16T21:43:59.2149481-05:00</Value>
       </Assembly>
       <Assembly>
