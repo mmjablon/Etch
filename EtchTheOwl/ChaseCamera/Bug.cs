@@ -10,6 +10,10 @@ namespace EtchTheOwl
     class Bug : BasicModel
     {
         new public static Model model;
+        float maxX = 2000.0f;
+        float minX = 150.0f;
+        float speed = 1000.0f;
+        bool up = true;
 
         public Bug(Matrix world)
             : base(model, world)
@@ -20,6 +24,37 @@ namespace EtchTheOwl
         public override Model getModel()
         {
             return model;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            Vector3 pos = world.Translation;
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (up)
+            {
+                if (pos.Y >= maxX)
+                {
+                    up = false;
+                }
+                else
+                {
+                    Matrix translation = Matrix.CreateTranslation(new Vector3(0,speed * elapsed,0));
+                    world *= translation;
+                }
+            }
+            else
+            {
+                if (pos.Y <= minX)
+                {
+                    up = true;
+                }
+                else
+                {
+                    Matrix translation = Matrix.CreateTranslation(new Vector3(0, -speed * elapsed, 0));
+                    world *= translation;
+                }
+            }
         }
 
 

@@ -39,6 +39,8 @@ namespace EtchTheOwl
         private int maxX;
 
         private bool singlePlayer;
+        int numBugs1;
+        int numBugs2;
 
         private SoundEffect collision;
 
@@ -46,6 +48,8 @@ namespace EtchTheOwl
             : base(game)
         {
             this.singlePlayer = singlePlayer;
+            numBugs1 = 0;
+            numBugs2 = 0;
 
             //set up player independent variables
             groundSwaps = 1;
@@ -65,7 +69,7 @@ namespace EtchTheOwl
                 camera1.NearPlaneDistance = 10.0f;
                 camera1.FarPlaneDistance = 100000.0f;
 
-                etch1 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"), Matrix.Identity, camera1, maxX);
+                etch1 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"), new Vector3(0,0, 10000), camera1, maxX);
 
                 camera1.AspectRatio = (float)graphics.GraphicsDevice.Viewport.Width /
                    graphics.GraphicsDevice.Viewport.Height;
@@ -86,7 +90,8 @@ namespace EtchTheOwl
                 camera1.NearPlaneDistance = 10.0f;
                 camera1.FarPlaneDistance = 100000.0f;
 
-                etch1 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"), Matrix.Identity, camera1, maxX);
+                etch1 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"),
+                    new Vector3(0,0,10000), camera1, maxX);
 
                 camera1.AspectRatio = (float)graphics.GraphicsDevice.Viewport.Width /2 /
                    graphics.GraphicsDevice.Viewport.Height;
@@ -105,7 +110,8 @@ namespace EtchTheOwl
                 camera2.NearPlaneDistance = 10.0f;
                 camera2.FarPlaneDistance = 100000.0f;
 
-                etch2 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"), Matrix.Identity, camera1, maxX);
+                etch2 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"),
+                    new Vector3(-1000, 0, 10000), camera1, maxX);
 
                 // Set the camera aspect ratio
                 // This must be done after the class to base.Initalize() which will
@@ -123,6 +129,15 @@ namespace EtchTheOwl
             }
 
             resetTime = 0;
+        }
+
+        public int getPlayer1Bugs(){
+            return numBugs1;
+        }
+
+        public int getPlayer2Bugs()
+        {
+            return numBugs2;
         }
 
         public void loadLevel(int level)
@@ -156,7 +171,7 @@ namespace EtchTheOwl
             Enemy.model = Game.Content.Load<Model>("Models\\Enemy");
             Tree.model = Game.Content.Load<Model>("Models\\tree");
             Bush.model = Game.Content.Load<Model>("Models\\bush");
-            Bug.model = Game.Content.Load<Model>("Models\\fly");
+            Bug.model = Game.Content.Load<Model>("Models\\flyrotated");
 
             collision = Game.Content.Load<SoundEffect>("Audio\\owl");
             groundCurrent = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
@@ -202,7 +217,7 @@ namespace EtchTheOwl
             {
                 foreach (Tree tree in trees)
                 {
-                    if (inRange(tree))
+                    if (collisionRange(tree))
                     {
                         if (etch1.CollidesWith(tree))
                         {
@@ -210,6 +225,39 @@ namespace EtchTheOwl
                             resetTime = 1;
                             etch1.Reset();
                             camera1.Reset();
+                        }
+                    }
+                }
+
+
+                foreach (Bush bush in bushes)
+                {
+                    if (collisionRange(bush))
+                    {
+                        if (etch1.CollidesWith(bush) && etch1.getHeight() < 550)
+                        {
+                            collision.Play();
+                            resetTime = 1;
+                            etch1.Reset();
+                            camera1.Reset();
+                        }
+                    }
+                }
+
+                foreach (Bug bug in bugs)
+                {
+                    if (viewRange(bug))
+                    {
+                        bug.Update(gameTime);
+                        if (collisionRange(bug))
+                        {
+                            if (etch1.CollidesWith(bug))
+                            {
+                                collision.Play();
+                                resetTime = 1;
+                                etch1.Reset();
+                                camera1.Reset();
+                            }
                         }
                     }
                 }
@@ -237,7 +285,7 @@ namespace EtchTheOwl
             base.Update(gameTime);
         }
 
-        private bool inRange(Tree t)
+        private bool collisionRange(BasicModel t)
         {
             Vector3 treePos = t.GetWorld().Translation;
             Vector3 etchPos = etch1.Position;
@@ -253,6 +301,12 @@ namespace EtchTheOwl
             {
                 return false;
             }
+        }
+
+        private bool viewRange(BasicModel t)
+        {
+            //to do
+            return true;
         }
 
         public void continueGround()

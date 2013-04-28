@@ -37,11 +37,12 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <Compile Include="Models\FlyCount.fbx">
-      <Name>FlyCount</Name>
+    <Compile Include="Models\FlyRotated.fbx">
+      <Name>FlyRotated</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <ProcessorParameters_Scale>10</ProcessorParameters_Scale>
+      <ProcessorParameters_RotationZ>90</ProcessorParameters_RotationZ>
     </Compile>
     <Compile Include="Models\EndTree.fbx">
       <Name>EndTree</Name>

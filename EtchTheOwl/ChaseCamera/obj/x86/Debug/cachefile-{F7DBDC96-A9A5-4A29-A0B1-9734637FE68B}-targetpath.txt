@@ -1,7 +1,6 @@
 Content\Fonts\gameFont.xnb
 Content\Fonts\titleFont.xnb
 Content\Models\Ground.xnb
-Content\Models\FlyCount.xnb
 Content\Models\Tree.xnb
 Content\Models\EtchAnimated.xnb
 Content\Models\untitled.xnb
@@ -19,3 +18,4 @@ Content\Textures\grass_0.xnb
 Content\Textures\Etch_0.xnb
 Content\Textures\Crepusculo_0.xnb
 Content\Models\EndTree.xnb
+Content\Models\FlyRotated.xnb

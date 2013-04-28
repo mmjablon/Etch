@@ -43,7 +43,6 @@ C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\GameTh
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\gameFont.xnb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\titleFont.xnb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Ground.xnb
-C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\FlyCount.xnb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EndTree.xnb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Tree.xnb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EtchAnimated.xnb
@@ -69,3 +68,4 @@ C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\EtchTh
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\EtchTheOwl.exe
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\EtchTheOwl.pdb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\FlyRotated.xnb

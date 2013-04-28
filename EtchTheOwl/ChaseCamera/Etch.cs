@@ -26,7 +26,7 @@ namespace EtchTheOwl
         #region Fields
 
         private const float MinimumAltitude = 350.0f;
-        private const float MaximumAltitude = 700.0f;
+        private const float MaximumAltitude = 2000.0f;
 
         /// <summary>
         /// A reference to the graphics device used to access the viewport for touch input.
@@ -84,17 +84,18 @@ namespace EtchTheOwl
 
         public float HorizontalVelocity = 2000.0f;
 
-        AnimationPlayer animationPlayer;
+        private AnimationPlayer animationPlayer;
+        private AnimationClip startClip;
 
         private Boolean reset;
         private double resetTime;
         private bool shakeDirection;
 
-        AnimationClip startClip;
+        private ChaseCamera camera;
 
-        ChaseCamera camera;
+        private int maxX;
 
-        int maxX;
+        private bool jumpOn = false;
 
         public Controls controller;
 
@@ -102,8 +103,8 @@ namespace EtchTheOwl
 
         #region Initialization
 
-        public Etch(GraphicsDevice device, Model model, Matrix world, ChaseCamera camera, int maxX)
-            : base(model, world)
+        public Etch(GraphicsDevice device, Model model, Vector3 position, ChaseCamera camera, int maxX)
+            : base(model, Matrix.Identity)
         {
             graphicsDevice = device;
             this.camera = camera;
@@ -129,11 +130,12 @@ namespace EtchTheOwl
             resetTime = 0;
             shakeDirection = true;
             ResetComplete();
+
+            Position = new Vector3(position.X, MinimumAltitude, position.Z);
+            world.Translation = Position;
+            rotateAlongZ(-ZRotation);
         }
 
-        /// <summary>
-        /// Restore the etch to its original starting state
-        /// </summary>
         public void Reset()
         {
             Position = new Vector3(Position.X, MinimumAltitude, Position.Z + 10000);
@@ -145,6 +147,7 @@ namespace EtchTheOwl
             animationPlayer.Update(new TimeSpan(0, 0, 0), false, Matrix.Identity);
         }
 
+        //Reset etch to his original starting state
         public void ResetComplete()
         {
             Position = new Vector3(0, MinimumAltitude, 0);
@@ -153,6 +156,11 @@ namespace EtchTheOwl
             right = Vector3.Right;
             Velocity = Vector3.Zero;
             rotateAlongZ(-ZRotation);
+        }
+
+        public float getHeight()
+        {
+            return world.Translation.Y;
         }
 
         #endregion
@@ -205,53 +213,96 @@ namespace EtchTheOwl
                 bool moveRight = false;
                 bool jump = false;
                 bool thrust = false;
+                bool moveUp = false;
+                bool moveDown = false;
 
                 switch (controller)
                 {
                     case Controls.Keys:
                         KeyboardState keyboardState = Keyboard.GetState();
-                        if (keyboardState.IsKeyDown(Keys.A))
-                            moveLeft = true;
-
-                        if (keyboardState.IsKeyDown(Keys.D))
-                            moveRight = true;
-
-                        if (keyboardState.IsKeyDown(Keys.Space)) 
-                            jump = true;
-
-                        if (keyboardState.IsKeyDown(Keys.W))
-                            thrust = true;
+                        if (jumpOn)
+                        {
+                            if (keyboardState.IsKeyDown(Keys.A))
+                                moveLeft = true;
+                            if (keyboardState.IsKeyDown(Keys.D))
+                                moveRight = true;
+                            if (keyboardState.IsKeyDown(Keys.Space))
+                                jump = true;
+                            if (keyboardState.IsKeyDown(Keys.Up))
+                                thrust = true;
+                        }
+                        else
+                        {
+                            if (keyboardState.IsKeyDown(Keys.A))
+                                moveLeft = true;
+                            if (keyboardState.IsKeyDown(Keys.D))
+                                moveRight = true;
+                            if (keyboardState.IsKeyDown(Keys.Space))
+                                thrust = true;
+                            if (keyboardState.IsKeyDown(Keys.W))
+                                moveUp = true;
+                            if (keyboardState.IsKeyDown(Keys.S))
+                                moveDown = true;
+                        }
 
                         break;
 
                     case Controls.ControllerOne:
                         gamePadState = GamePad.GetState(PlayerIndex.One);
-                        if (gamePadState.ThumbSticks.Left.X < 0)
-                            moveLeft = true;
 
-                        if (gamePadState.ThumbSticks.Left.X > 0)
-                            moveRight = true;
-
-                        if (gamePadState.Buttons.A == ButtonState.Pressed)
-                            jump = true;
-                        if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
-                            thrust = true;
+                        if (jumpOn)
+                        {
+                            if (gamePadState.ThumbSticks.Left.X < 0)
+                                moveLeft = true;
+                            if (gamePadState.ThumbSticks.Left.X > 0)
+                                moveRight = true;
+                            if (gamePadState.Buttons.A == ButtonState.Pressed)
+                                jump = true;
+                            if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
+                                thrust = true;
+                        }
+                        else
+                        {
+                            if (gamePadState.ThumbSticks.Left.X < 0)
+                                moveLeft = true;
+                            if (gamePadState.ThumbSticks.Left.X > 0)
+                                moveRight = true;
+                            if (gamePadState.Triggers.Right > 0 || gamePadState.Buttons.A == ButtonState.Pressed)
+                                thrust = true;
+                            if (gamePadState.ThumbSticks.Left.Y > 0)
+                                moveUp = true;
+                            if (gamePadState.ThumbSticks.Left.Y < 0)
+                                moveDown = true;
+                        }
 
                         break;
 
                     case Controls.ControllerTwo:
                         gamePadState = GamePad.GetState(PlayerIndex.Two);
-                        if (gamePadState.ThumbSticks.Left.X < 0)
-                            moveLeft = true;
-
-                        if (gamePadState.ThumbSticks.Left.X > 0)
-                            moveRight = true;
-
-                        if (gamePadState.Buttons.A == ButtonState.Pressed)
-                            jump = true;
-
-                        if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
-                            thrust = true;
+                        if (jumpOn)
+                        {
+                            if (gamePadState.ThumbSticks.Left.X < 0)
+                                moveLeft = true;
+                            if (gamePadState.ThumbSticks.Left.X > 0)
+                                moveRight = true;
+                            if (gamePadState.Buttons.A == ButtonState.Pressed)
+                                jump = true;
+                            if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
+                                thrust = true;
+                        }
+                        else
+                        {
+                            if (gamePadState.ThumbSticks.Left.X < 0)
+                                moveLeft = true;
+                            if (gamePadState.ThumbSticks.Left.X > 0)
+                                moveRight = true;
+                            if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
+                                thrust = true;
+                            if (gamePadState.ThumbSticks.Right.Y > 0)
+                                moveUp = true;
+                            if (gamePadState.ThumbSticks.Right.Y < 0)
+                                moveDown = true;
+                        }
 
                         break;
                 }
@@ -309,21 +360,37 @@ namespace EtchTheOwl
                 float acceleration = force / Mass;
                 Velocity.Z += acceleration * elapsed;
 
-
-                if (Position.Y <= MinimumAltitude)
-                {
-                    Velocity.Y = 0.0f;
-                }
-                else
-                {
-                    Velocity.Y += -2500 * elapsed;
-                }
-
-                if (jump)
+                if (jumpOn)
                 {
                     if (Position.Y <= MinimumAltitude)
                     {
-                        Velocity.Y = 3000.0f;
+                        Velocity.Y = 0.0f;
+                    }
+                    else
+                    {
+                        Velocity.Y += -2500 * elapsed;
+                    }
+
+                    if (jump)
+                    {
+                        if (Position.Y <= MinimumAltitude)
+                        {
+                            Velocity.Y = 3000.0f;
+                        }
+                    }
+
+                    // Prevent etch from flying under the ground
+                    Position.Y += Velocity.Y * elapsed;
+                }
+                else
+                {
+                    if (moveUp && Position.Y <= MaximumAltitude)
+                    {
+                        Position.Y += 1500 * elapsed;
+                    }
+                    else if (moveDown && Position.Y >= MinimumAltitude)
+                    {
+                        Position.Y -= 1500 * elapsed;
                     }
                 }
 
@@ -332,9 +399,6 @@ namespace EtchTheOwl
 
                 // Apply velocity
                 Position.Z -= Velocity.Z * elapsed;
-
-                // Prevent etch from flying under the ground
-                Position.Y += Velocity.Y * elapsed;
 
                 world.Translation = Position;
                 position = Position;

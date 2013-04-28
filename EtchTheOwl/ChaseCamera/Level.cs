@@ -13,33 +13,47 @@ namespace EtchTheOwl
         public IList<Bush> bushes;
         public IList<BasicModel> bugs;
 
-        public int numTrees;
         public int maxX;
-        public int treeSpacing;
+        //public int treeSpacing;
+        public int levelEnd;
+        public int xDensity;
+        public float zDensity;
+        public float bugDensity;
 
         public Level()
         {
             trees = new List<Tree>();
             bugs = new List<BasicModel>();
             bushes = new List<Bush>();
-            numTrees = 1000;
             maxX = 25000;
-            treeSpacing = -500;
+            //treeSpacing = -500;
+            levelEnd = 100000;
+            //number of trees per x value
+            xDensity = 5;
+
+            //percent of trees from 0 to level end
+            zDensity = 0.0005f;
+
+            bugDensity = 0.001f;
 
             Random rand = new Random();
-            for (int i = 1; i <= numTrees; i++)
+            for (int i = 1; i <= (float)levelEnd * zDensity; i++)
             {
-                trees.Add(new Tree(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, 0, i * treeSpacing)), true));
+                for (int j = 0; j < xDensity; j++)
+                {
+                    trees.Add(new Tree(Matrix.CreateTranslation(
+                        new Vector3(rand.Next(2 * maxX) - maxX, 0, -i * (1/(zDensity)))), true));
+                }
             }
 
-            for (int i = 1; i <= numTrees / 5; i++)
+            for (int i = 1; i <= levelEnd * zDensity; i++)
             {
-                bushes.Add(new Bush(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, 0, i * 5 * treeSpacing))));
+                bushes.Add(new Bush(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, 0, -i * (1 / zDensity)))));
             }
 
-            for (int i = 1; i <= numTrees / 10; i++)
+            for (int i = 1; i <= levelEnd * bugDensity; i++)
             {
-                bugs.Add(new Bug(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, 0, i * 5 * treeSpacing))));
+                bugs.Add(new Bug(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, 150, -i * (1/bugDensity)))));
             }
         }
     }
