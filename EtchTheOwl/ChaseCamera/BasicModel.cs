@@ -20,7 +20,7 @@ namespace EtchTheOwl
             this.world = world;
         }
 
-        public virtual Matrix GetWorld()
+        public virtual Matrix getWorld()
         {
             return world;
         }
@@ -71,7 +71,7 @@ namespace EtchTheOwl
             }
         }
 
-        public bool CollidesWith(BasicModel otherModel)
+        public virtual bool CollidesWith(BasicModel otherModel)
         {
             // Loop through each ModelMesh in both objects and compare
             // all bounding spheres for collisions

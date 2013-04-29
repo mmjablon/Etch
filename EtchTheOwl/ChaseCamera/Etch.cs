@@ -98,6 +98,7 @@ namespace EtchTheOwl
         private bool jumpOn = false;
 
         public Controls controller;
+        public float speedUp;
 
         #endregion
 
@@ -109,6 +110,7 @@ namespace EtchTheOwl
             graphicsDevice = device;
             this.camera = camera;
             this.maxX = maxX - (int) (maxX * .4);
+            speedUp = 1;
 
             controller = Controls.Keys;
 
@@ -163,6 +165,11 @@ namespace EtchTheOwl
             return world.Translation.Y;
         }
 
+        public void speeds(float speedUp)
+        {
+            this.speedUp = speedUp;
+        }
+
         #endregion
 
         /// <summary>
@@ -173,7 +180,7 @@ namespace EtchTheOwl
         {
             if (reset)
             {
-                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                float elapsed = speedUp*(float)gameTime.ElapsedGameTime.TotalSeconds;
                 resetTime -= elapsed;
 
                 if (ZRotation > .15 * Math.PI)

@@ -55,11 +55,43 @@ namespace EtchTheOwl
                 }
                 mesh.Draw();
             }
+        }
 
-            if (hasEnemy)
+        public override bool CollidesWith(BasicModel otherModel)
+        {
+            // Loop through each ModelMesh in both objects and compare
+            // all bounding spheres for collisions
+            foreach (ModelMesh myModelMeshes in model.Meshes)
             {
-
+                foreach (ModelMesh hisModelMeshes in otherModel.getModel().Meshes)
+                {
+                    if (myModelMeshes.BoundingSphere.Transform(
+                        world).Intersects(
+                        hisModelMeshes.BoundingSphere.Transform(otherModel.getWorld())))
+                        return true;
+                }
             }
+
+            BoundingSphere branches = new BoundingSphere(new Vector3(world.Translation.X, 2000 ,world.Translation.Z), 350.0f);
+            BoundingSphere branches2 = new BoundingSphere(new Vector3(world.Translation.X, 1500, world.Translation.Z), 200.0f);
+            BoundingSphere trunk = new BoundingSphere(new Vector3(world.Translation.X, 500, world.Translation.Z), 50.0f);
+
+            if (otherModel.CollidesWith(branches))
+            {
+                return true;
+            }
+
+            if (otherModel.CollidesWith(branches2))
+            {
+                return true;
+            }
+
+            if (otherModel.CollidesWith(trunk))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

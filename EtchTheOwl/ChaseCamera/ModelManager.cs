@@ -20,29 +20,33 @@ namespace EtchTheOwl
         public Etch etch2;
         private ChaseCamera camera1;
         private ChaseCamera camera2;
-        private Viewport defaultViewport;
-        private Viewport leftViewport;
-        private Viewport rightViewport;
+        public Viewport defaultViewport;
+        public Viewport leftViewport;
+        public Viewport rightViewport;
 
         private IList<Tree> trees;
         private IList<Bush> bushes;
-        private IList<BasicModel> bugs;
+        private IList<Bug> bugs;
 
         private BasicModel groundCurrent;
         private BasicModel groundSecondary;
         private Boolean ground;
 
-        private double resetTime;
+        private float resetTime;
+        private float collisionTime;
 
         private int groundDisplacement = -131070;
         private int groundSwaps;
         private int maxX;
+        private BasicModel endTree;
 
         private bool singlePlayer;
-        int numBugs1;
-        int numBugs2;
+        public int numBugs1;
+        public int numBugs2;
 
         private SoundEffect collision;
+        private SoundEffect crunch;
+        private Level currentLevel;
 
         public ModelManager(Game game, GraphicsDeviceManager graphics, bool singlePlayer, int level)
             : base(game)
@@ -142,11 +146,11 @@ namespace EtchTheOwl
 
         public void loadLevel(int level)
         {
-            Level current = Levels.getLevel(level);
-            trees = current.trees;
-            bushes = current.bushes;
-            bugs = current.bugs;
-            maxX = current.maxX;
+            currentLevel = Levels.getLevel(level);
+            trees = currentLevel.trees;
+            bushes = currentLevel.bushes;
+            bugs = currentLevel.bugs;
+            maxX = currentLevel.maxX;
         }
 
         /// <summary>
@@ -172,8 +176,10 @@ namespace EtchTheOwl
             Tree.model = Game.Content.Load<Model>("Models\\tree");
             Bush.model = Game.Content.Load<Model>("Models\\bush");
             Bug.model = Game.Content.Load<Model>("Models\\flyrotated");
+            endTree = new BasicModel(Game.Content.Load<Model>("Models\\endtree"), Matrix.CreateTranslation(0,0,-currentLevel.levelEnd - 30000));
 
             collision = Game.Content.Load<SoundEffect>("Audio\\owl");
+            crunch = Game.Content.Load<SoundEffect>("Audio\\crunch");
             groundCurrent = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
             groundSecondary = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
             groundSecondary.translate(new Vector3(0, 0, groundDisplacement));
@@ -187,13 +193,13 @@ namespace EtchTheOwl
 
             if (singlePlayer)
             {
-                // Update the Etch
+                // Update Etch
                 etch1.Update(gameTime);
                 camera1.Update(gameTime);
             }
             else
             {
-                // Update the Etch
+                // Update Etch
                 etch1.Update(gameTime);
                 camera1.Update(gameTime);
                 etch2.Update(gameTime);
@@ -203,7 +209,7 @@ namespace EtchTheOwl
             // Reset the ship on R key or right thumb stick clicked
             if (resetTime > 0)
             {
-                resetTime -= gameTime.ElapsedGameTime.TotalSeconds;
+                resetTime -= (float) gameTime.ElapsedGameTime.TotalSeconds;
                 camera1.Reset();
             }
             else if (currentKeyboardState.IsKeyDown(Keys.R) ||
@@ -219,7 +225,7 @@ namespace EtchTheOwl
                 {
                     if (collisionRange(tree))
                     {
-                        if (etch1.CollidesWith(tree))
+                        if (tree.CollidesWith(etch1))
                         {
                             collision.Play();
                             resetTime = 1;
@@ -244,36 +250,37 @@ namespace EtchTheOwl
                     }
                 }
 
-                foreach (Bug bug in bugs)
+                //iterate backwards to delete while iterating
+                for(int i = bugs.Count - 1; i >= 0; i--)
                 {
-                    if (viewRange(bug))
+                    Bug bug = bugs[i];
+                    if (inViewRange(bug, etch1))
                     {
                         bug.Update(gameTime);
                         if (collisionRange(bug))
                         {
                             if (etch1.CollidesWith(bug))
                             {
-                                collision.Play();
-                                resetTime = 1;
-                                etch1.Reset();
-                                camera1.Reset();
+                                numBugs1++;
+                                crunch.Play();
+                                bugs.Remove(bug);
                             }
                         }
                     }
                 }
             }
 
-            //if etcch gets near the edge of one ground plane translate it
-            if (etch1.Position.Z < groundSwaps * groundDisplacement)
-            {
-                continueGround();
-                groundSwaps++;
-            }
-
             if (singlePlayer)
             {
                 // Update the camera to chase the new target
                 UpdateCameraChaseTarget(camera1, etch1);
+
+                //if etcch gets near the edge of one ground plane translate it
+                if (etch1.Position.Z < groundSwaps * groundDisplacement)
+                {
+                    continueGround();
+                    groundSwaps++;
+                }
             }
             else
             {
@@ -287,7 +294,7 @@ namespace EtchTheOwl
 
         private bool collisionRange(BasicModel t)
         {
-            Vector3 treePos = t.GetWorld().Translation;
+            Vector3 treePos = t.getWorld().Translation;
             Vector3 etchPos = etch1.Position;
 
             double maxZ = treePos.Z + 1000;
@@ -303,10 +310,18 @@ namespace EtchTheOwl
             }
         }
 
-        private bool viewRange(BasicModel t)
+        private bool inViewRange(BasicModel t, Etch etch)
         {
-            //to do
-            return true;
+            float modelLocation = t.getWorld().Translation.Z;
+            float etchLocation = etch.Position.Z;
+            if (modelLocation -1000<= etchLocation && modelLocation >= etchLocation - 100000)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void continueGround()
@@ -323,6 +338,30 @@ namespace EtchTheOwl
             }
         }
 
+        public bool finished1()
+        {
+            if (etch1.Position.Z < -currentLevel.levelEnd - 25000)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool finished2()
+        {
+            if (etch2.Position.Z < -currentLevel.levelEnd - 25000)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public override void Draw(GameTime gameTime)
         {
             if (singlePlayer)
@@ -330,20 +369,30 @@ namespace EtchTheOwl
                 etch1.DrawModel(camera1);
                 foreach (Tree tree in trees)
                 {
-                    tree.DrawModel(camera1);
+                    if(inViewRange(tree, etch1)){
+                        tree.DrawModel(camera1);
+                    }
                 }
 
                 foreach (Bush bush in bushes)
                 {
-                    bush.DrawModel(camera1);
+                    if (inViewRange(bush, etch1))
+                    {
+                        bush.DrawModel(camera1);
+                    }
                 }
 
                 foreach (BasicModel bug in bugs)
                 {
-                    bug.DrawModel(camera1);
+                    if (inViewRange(bug, etch1))
+                    {
+                        bug.DrawModel(camera1);
+                    }
                 }
                 groundCurrent.DrawModel(camera1);
                 groundSecondary.DrawModel(camera1);
+
+                endTree.DrawModel(camera1);
             }
             else
             {
@@ -353,20 +402,30 @@ namespace EtchTheOwl
                 etch2.DrawModel(camera1);
                 foreach (Tree tree in trees)
                 {
-                    tree.DrawModel(camera1);
+                    if (inViewRange(tree, etch1))
+                    {
+                        tree.DrawModel(camera1);
+                    }
                 }
 
                 foreach (Bush bush in bushes)
                 {
-                    bush.DrawModel(camera1);
+                    if (inViewRange(bush, etch1))
+                    {
+                        bush.DrawModel(camera1);
+                    }
                 }
 
                 foreach (BasicModel bug in bugs)
                 {
-                    bug.DrawModel(camera1);
+                    if (inViewRange(bug, etch1))
+                    {
+                        bug.DrawModel(camera1);
+                    }
                 }
                 groundCurrent.DrawModel(camera1);
                 groundSecondary.DrawModel(camera1);
+                endTree.DrawModel(camera1);
 
                 GraphicsDevice.Viewport = rightViewport;
 
@@ -374,20 +433,30 @@ namespace EtchTheOwl
                 etch2.DrawModel(camera2);
                 foreach (Tree tree in trees)
                 {
-                    tree.DrawModel(camera2);
+                    if (inViewRange(tree, etch2))
+                    {
+                        tree.DrawModel(camera2);
+                    }
                 }
 
                 foreach (Bush bush in bushes)
                 {
-                    bush.DrawModel(camera2);
+                    if (inViewRange(bush, etch2))
+                    {
+                        bush.DrawModel(camera2);
+                    }
                 }
 
                 foreach (BasicModel bug in bugs)
                 {
-                    bug.DrawModel(camera2);
+                    if (inViewRange(bug, etch2))
+                    {
+                        bug.DrawModel(camera2);
+                    }
                 }
                 groundCurrent.DrawModel(camera2);
                 groundSecondary.DrawModel(camera2);
+                endTree.DrawModel(camera2);
             }
 
             //GraphicsDevice.Viewport = defaultViewport;

@@ -29,38 +29,39 @@ namespace EtchTheOwl
     {
         #region Fields
 
-        GraphicsDeviceManager graphics;
-        ModelManager modelManager;
+        private GraphicsDeviceManager graphics;
+        private ModelManager modelManager;
 
-        SpriteBatch spriteBatch;
-        SpriteFont spriteFont;
-        SpriteFont titleFont;
-        Texture2D fly;
+        private SpriteBatch spriteBatch;
+        private SpriteFont spriteFont;
+        private SpriteFont titleFont;
+        private SpriteFont numberFont;
+        private Texture2D fly;
 
-        KeyboardState currentKeyboardState = new KeyboardState();
-        GamePadState currentGamePadState = new GamePadState();
-        KeyboardState previousKeyboardState = new KeyboardState();
-        GamePadState previousGamePadState = new GamePadState();
+        private KeyboardState currentKeyboardState = new KeyboardState();
+        private GamePadState currentGamePadState = new GamePadState();
+        private KeyboardState previousKeyboardState = new KeyboardState();
+        private GamePadState previousGamePadState = new GamePadState();
 
         //sound effect
-        Song backgroundMusic;
+        private Song backgroundMusic;
         private SoundEffect beepUp;
         private SoundEffect beepDown;
 
-        enum GameState { Start, Controls, InGame, Settings, End};
-        GameState currentGameState;
-        Stopwatch timer;
-        bool singlePlayer;
+        enum GameState { Start, Controls, InGame, Pause, Settings, End};
+        private GameState currentGameState;
+        private Stopwatch timer;
+        private bool singlePlayer;
 
-        int mainMenuState;
-        int numMenuStates = 3;
-        int controlMenuState;
-        int numControlStates = 3;
-        int settingsMenuState;
-        int numSettingsStates = 3;
+        private int mainMenuState;
+        private int numMenuStates = 3;
+        private int controlMenuState;
+        private int numControlStates = 3;
+        private int settingsMenuState;
+        private int numSettingsStates = 3;
 
-        bool fullscreen;
-        bool toggleFullscreen;
+        private bool fullscreen;
+        private bool toggleFullscreen;
 
         #endregion
 
@@ -108,6 +109,7 @@ namespace EtchTheOwl
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
             spriteFont = Content.Load<SpriteFont>("Fonts\\gameFont");
             titleFont = Content.Load<SpriteFont>("Fonts\\titleFont");
+            numberFont = Content.Load<SpriteFont>("Fonts\\numberFont");
             backgroundMusic = Content.Load<Song>("Audio\\Departure");
             MediaPlayer.Play(backgroundMusic);
             MediaPlayer.IsRepeating = true;
@@ -289,16 +291,43 @@ namespace EtchTheOwl
                     break;
 
                 case GameState.InGame:
+                    if(currentKeyboardState.IsKeyDown(Keys.P) || currentGamePadState.IsButtonDown(Buttons.Back)){
+                        currentGameState = GameState.Pause;
+                        timer.Stop();
+                        modelManager.Enabled = false;
+                    }
 
+                    if (singlePlayer)
+                    {
+                        if (modelManager.finished1())
+                        {
+                            currentGameState = GameState.End;
+                            timer.Stop();
+                            modelManager.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+
+                    }
                     break;
+
+                case GameState.Pause:
+                    if (currentKeyboardState.IsKeyDown(Keys.Enter) || currentGamePadState.IsButtonDown(Buttons.Start))
+                    {
+                        currentGameState = GameState.InGame;
+                        timer.Start();
+                        modelManager.Enabled = true;
+                    }
+                    break;
+
                 case GameState.End:
 
                     break;
             }
 
             // Exit when the Escape key or Back button is pressed
-            if (currentKeyboardState.IsKeyDown(Keys.Escape) ||
-                currentGamePadState.Buttons.Back == ButtonState.Pressed)
+            if (currentKeyboardState.IsKeyDown(Keys.Escape))
             {
                 Exit();
             }
@@ -356,7 +385,6 @@ namespace EtchTheOwl
                     stringOne = "One-Player";
                     stringTwo = "Two-Player";
                     stringThree = "Settings";
-                    menuFont = spriteFont;
                     startHeight = 100;
 
                     // Draw the string twice to create a drop shadow, first colored black
@@ -494,23 +522,6 @@ namespace EtchTheOwl
                     spriteBatch.End();
                     break;
 
-                case GameState.InGame:
-                    spriteBatch.Begin();
-
-                    TimeSpan ts = timer.Elapsed;
-
-                    // Format and display the TimeSpan value. 
-                    string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                    spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
-                    spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
-                    float flyScale = 0.13f;
-                    float spriteWidth = fly.Width * flyScale;
-                    Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
-                    
-                    spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
-
-                    spriteBatch.End();
-                    break;
                 case GameState.Settings:
                     spriteBatch.Begin();
 
@@ -563,8 +574,140 @@ namespace EtchTheOwl
 
                     spriteBatch.End();
                     break;
-                case GameState.End:
 
+                case GameState.InGame:
+                    spriteBatch.Begin();
+
+                    if (singlePlayer)
+                    {
+                        TimeSpan ts = timer.Elapsed;
+
+                        // Format and display the TimeSpan value. 
+                        string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
+                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
+                        float flyScale = 0.13f;
+                        float spriteWidth = fly.Width * flyScale;
+                        Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                        spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
+                            flyPos, Color.White);
+                    }
+                    else
+                    {
+                        GraphicsDevice.Viewport = modelManager.leftViewport;
+                        TimeSpan ts = timer.Elapsed;
+
+                        // Format and display the TimeSpan value. 
+                        string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
+                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
+                        float flyScale = 0.13f;
+                        float spriteWidth = fly.Width * flyScale;
+                        Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                        spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(), 
+                            flyPos, Color.White);
+
+                        //flush the spriteBatch
+                        spriteBatch.End();
+                        spriteBatch.Begin();
+                        GraphicsDevice.Viewport = modelManager.rightViewport;
+                        flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                        spriteBatch.DrawString(numberFont, modelManager.numBugs2.ToString(),
+                            flyPos, Color.White);
+
+                    }
+                    spriteBatch.End();
+                    break;
+
+                case GameState.Pause:
+                    break;
+
+                case GameState.End:
+               
+                    if (singlePlayer)
+                    {
+                        spriteBatch.Begin();
+
+                        TimeSpan ts = timer.Elapsed;
+
+                        // Format and display the TimeSpan value. 
+                        string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                        float flyScale = 0.13f;
+                        float spriteWidth = fly.Width * flyScale;
+                        Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                        spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
+                            flyPos, Color.White);
+
+                        TimeSpan tsNew = timer.Elapsed - new TimeSpan(0,0,5* modelManager.numBugs1);
+                        string elapsedTimeNew = String.Format("{0:00}:{1:00}.{2:00}", tsNew.Minutes, tsNew.Seconds, tsNew.Milliseconds / 10);
+
+                        title = "Level Complete";
+                        stringOne = "Actual Time: " + elapsedTime;
+                        stringTwo = "Bugs: " + modelManager.numBugs1.ToString() ;
+                        stringThree = "Level Time: " + elapsedTimeNew;
+                        startHeight = 100;
+
+                        // Draw the string twice to create a drop shadow, first colored black
+                        // and offset one pixel to the bottom right, then again in white at the
+                        // intended position. This makes text easier to read over the background.
+                        spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2) - 3,
+                            startHeight - 3), Color.Black);
+                        spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2),
+                            startHeight), Color.White);
+
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y), stringOneColor);
+
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y), stringTwoColor);
+
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y), stringThreeColor);
+
+                        spriteBatch.End();
+                    }
+                    else
+                    {
+                        GraphicsDevice.Viewport = modelManager.leftViewport;
+                        TimeSpan ts = timer.Elapsed;
+
+                        // Format and display the TimeSpan value. 
+                        string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
+                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
+                        float flyScale = 0.13f;
+                        float spriteWidth = fly.Width * flyScale;
+                        Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                        spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
+                            flyPos, Color.White);
+
+                        //flush the spriteBatch
+                        spriteBatch.End();
+                        spriteBatch.Begin();
+                        GraphicsDevice.Viewport = modelManager.rightViewport;
+                        flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                        spriteBatch.DrawString(numberFont, modelManager.numBugs2.ToString(),
+                            flyPos, Color.White);
+
+                    }
                     break;
             }
         }

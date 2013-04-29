@@ -11,7 +11,7 @@ namespace EtchTheOwl
     {
         public IList<Tree> trees;
         public IList<Bush> bushes;
-        public IList<BasicModel> bugs;
+        public IList<Bug> bugs;
 
         public int maxX;
         //public int treeSpacing;
@@ -23,18 +23,17 @@ namespace EtchTheOwl
         public Level()
         {
             trees = new List<Tree>();
-            bugs = new List<BasicModel>();
+            bugs = new List<Bug>();
             bushes = new List<Bush>();
             maxX = 25000;
-            //treeSpacing = -500;
-            levelEnd = 100000;
+            levelEnd = 1000000;
             //number of trees per x value
-            xDensity = 5;
+            xDensity = 8;
 
             //percent of trees from 0 to level end
-            zDensity = 0.0005f;
+            zDensity = 0.0007f;
 
-            bugDensity = 0.001f;
+            bugDensity = 0.0001f;
 
             Random rand = new Random();
             for (int i = 1; i <= (float)levelEnd * zDensity; i++)
@@ -53,7 +52,7 @@ namespace EtchTheOwl
 
             for (int i = 1; i <= levelEnd * bugDensity; i++)
             {
-                bugs.Add(new Bug(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, 150, -i * (1/bugDensity)))));
+                bugs.Add(new Bug(Matrix.CreateTranslation(new Vector3(rand.Next(2 * maxX) - maxX, rand.Next(1850) + 150, -i * (1 / bugDensity)))));
             }
         }
     }

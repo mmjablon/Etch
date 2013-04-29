@@ -69,3 +69,5 @@ C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Micros
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\EtchTheOwl.exe
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\EtchTheOwl.pdb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\FlyRotated.xnb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Fonts\numberFont.xnb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Audio\crunch.xnb

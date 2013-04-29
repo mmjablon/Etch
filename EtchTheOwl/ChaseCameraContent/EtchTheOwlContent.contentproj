@@ -48,7 +48,12 @@
       <Name>EndTree</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
-      <ProcessorParameters_Scale>25</ProcessorParameters_Scale>
+      <ProcessorParameters_Scale>100</ProcessorParameters_Scale>
+    </Compile>
+    <Compile Include="Fonts\numberFont.spritefont">
+      <Name>numberFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
     <None Include="Models\Etch.fbx">
       <Name>Etch</Name>
@@ -174,6 +179,13 @@
       <Name>fly</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\crunch.wav">
+      <Name>crunch</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

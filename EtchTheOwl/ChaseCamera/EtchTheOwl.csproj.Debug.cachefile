@@ -16,7 +16,9 @@ Content\Textures\fly.xnb
 Content\Textures\grass_0.xnb
 Content\Textures\Etch_0.xnb
 Content\Textures\Crepusculo_0.xnb
-Content\Models\EndTree.xnb
 Content\Models\FlyRotated.xnb
+Content\Models\EndTree.xnb
+Content\Fonts\numberFont.xnb
+Content\Audio\crunch.xnb
 Content\Audio\Departure.wma
 GameThumbnail.png
