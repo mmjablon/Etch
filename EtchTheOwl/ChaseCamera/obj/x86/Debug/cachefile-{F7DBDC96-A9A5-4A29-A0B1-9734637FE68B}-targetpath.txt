@@ -21,3 +21,5 @@ Content\Models\FlyRotated.xnb
 Content\Models\EndTree.xnb
 Content\Fonts\numberFont.xnb
 Content\Audio\crunch.xnb
+Content\moon_8k_color_brim16_0.xnb
+Content\Models\Moon.xnb

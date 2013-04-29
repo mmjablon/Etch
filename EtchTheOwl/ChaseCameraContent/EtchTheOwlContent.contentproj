@@ -113,6 +113,12 @@
       <ProcessorParameters_RotationX>-90</ProcessorParameters_RotationX>
       <ProcessorParameters_RotationY>-90</ProcessorParameters_RotationY>
     </Compile>
+    <Compile Include="Models\Moon.fbx">
+      <Name>Moon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_Scale>100</ProcessorParameters_Scale>
+    </Compile>
     <None Include="Textures\Etch.png">
       <Name>Etch</Name>
       <Importer>TextureImporter</Importer>

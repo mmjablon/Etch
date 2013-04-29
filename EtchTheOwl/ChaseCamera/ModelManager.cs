@@ -30,6 +30,8 @@ namespace EtchTheOwl
 
         private BasicModel groundCurrent;
         private BasicModel groundSecondary;
+        private BasicModel endTree;
+        private BasicModel moon;
         private Boolean ground;
 
         private float resetTime;
@@ -38,7 +40,6 @@ namespace EtchTheOwl
         private int groundDisplacement = -131070;
         private int groundSwaps;
         private int maxX;
-        private BasicModel endTree;
 
         private bool singlePlayer;
         public int numBugs1;
@@ -177,6 +178,11 @@ namespace EtchTheOwl
             Bush.model = Game.Content.Load<Model>("Models\\bush");
             Bug.model = Game.Content.Load<Model>("Models\\flyrotated");
             endTree = new BasicModel(Game.Content.Load<Model>("Models\\endtree"), Matrix.CreateTranslation(0,0,-currentLevel.levelEnd - 30000));
+            //moon on the horizon, change size to x100
+            moon = new BasicModel(Game.Content.Load<Model>("Models\\moon"), Matrix.CreateTranslation(0, 0, -currentLevel.levelEnd - 120000));
+            //moon behind tree, change size to x10
+            //moon = new BasicModel(Game.Content.Load<Model>("Models\\moon"), Matrix.CreateTranslation(10000, 10000, -currentLevel.levelEnd - 70000));
+
 
             collision = Game.Content.Load<SoundEffect>("Audio\\owl");
             crunch = Game.Content.Load<SoundEffect>("Audio\\crunch");
@@ -391,8 +397,8 @@ namespace EtchTheOwl
                 }
                 groundCurrent.DrawModel(camera1);
                 groundSecondary.DrawModel(camera1);
-
                 endTree.DrawModel(camera1);
+                moon.DrawModel(camera1);
             }
             else
             {
@@ -426,6 +432,7 @@ namespace EtchTheOwl
                 groundCurrent.DrawModel(camera1);
                 groundSecondary.DrawModel(camera1);
                 endTree.DrawModel(camera1);
+                moon.DrawModel(camera1);
 
                 GraphicsDevice.Viewport = rightViewport;
 
@@ -457,6 +464,7 @@ namespace EtchTheOwl
                 groundCurrent.DrawModel(camera2);
                 groundSecondary.DrawModel(camera2);
                 endTree.DrawModel(camera2);
+                moon.DrawModel(camera2);
             }
 
             //GraphicsDevice.Viewport = defaultViewport;
