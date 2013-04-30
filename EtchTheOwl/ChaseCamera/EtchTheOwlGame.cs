@@ -38,7 +38,7 @@ namespace EtchTheOwl
         private SpriteFont numberFont;
         private Texture2D fly;
         float flyScale = 0.13f;
-        float etchScale = 0.2f;
+        float etchScale = 0.1f;
         private Texture2D etch;
 
         private KeyboardState currentKeyboardState = new KeyboardState();
@@ -63,6 +63,8 @@ namespace EtchTheOwl
         private int numControlStates = 3;
         private int settingsMenuState;
         private int numSettingsStates = 3;
+        private int pauseMenuState;
+        private int numPauseStates = 3;
 
         private bool fullscreen;
         private bool toggleFullscreen;
@@ -336,12 +338,83 @@ namespace EtchTheOwl
                     break;
 
                 case GameState.Pause:
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) || currentGamePadState.IsButtonDown(Buttons.Start))
+                    if (currentGamePadState.IsButtonDown(Buttons.Start))
                     {
                         currentGameState = GameState.InGame;
-                        timer.Start();
+                        if (singlePlayer)
+                        {
+                            timer.Start();
+                        }
+                        else
+                        {
+                            timer.Start();
+                            timer2.Start();
+                        }
+                        pauseMenuState = 0;
                         modelManager.Enabled = true;
                     }
+
+
+                    if (currentKeyboardState.IsKeyDown(Keys.Enter))
+                    {
+                        if (pauseMenuState == 0)
+                        {
+                            currentGameState = GameState.InGame;
+                            if (singlePlayer)
+                            {
+                                timer.Start();
+                            }
+                            else
+                            {
+                                timer.Start();
+                                timer2.Start();
+                            }
+                            pauseMenuState = 0;
+                            modelManager.Enabled = true;
+                        }
+                        else if (pauseMenuState == 1)
+                        {
+                            currentGameState = GameState.Start;
+                            if (singlePlayer)
+                            {
+                                timer.Reset();
+                            }
+                            else
+                            {
+                                timer.Reset();
+                                timer2.Reset();
+                            }
+
+                            pauseMenuState = 0;
+                            singlePlayer = true; 
+                            Components.Remove(modelManager);
+                            modelManager = new ModelManager(this, graphics, singlePlayer, 1);
+                            Components.Add(modelManager);
+                        }
+                        else
+                        {
+                            Exit();
+                        }
+                    }
+
+
+                    if ((currentKeyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down)) || (currentGamePadState.ThumbSticks.Left.Y >= 0 && previousGamePadState.ThumbSticks.Left.Y < 0 ))
+                    {
+                        if (pauseMenuState < numPauseStates - 1)
+                        {
+                            pauseMenuState++;
+                            beepDown.Play();
+                        }
+                    }
+
+                  if ((currentKeyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up)) || (currentGamePadState.ThumbSticks.Left.Y <= 0 && previousGamePadState.ThumbSticks.Left.Y > 0))
+                  {
+                      if (pauseMenuState > 0)
+                      {
+                          pauseMenuState--;
+                          beepUp.Play();
+                      }
+                  }
                     break;
 
                 case GameState.End:
@@ -615,12 +688,12 @@ namespace EtchTheOwl
                         spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
                         spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
                             flyPos, Color.White);
-                        drawMiniEtch(modelManager.percentComplete1(), false);
+                        drawMiniEtch(modelManager.percentComplete1(), false, false);
                     }
                     else
                     {
-                            drawMiniEtch(modelManager.percentComplete1(), true);
-                            drawMiniEtch(modelManager.percentComplete2(), true);
+                            drawMiniEtch(modelManager.percentComplete1(), true, true);
+                            drawMiniEtch(modelManager.percentComplete2(), true, false);
                             spriteBatch.End();
 
                             GraphicsDevice.Viewport = modelManager.leftViewport;
@@ -661,7 +734,50 @@ namespace EtchTheOwl
                     break;
 
                 case GameState.Pause:
+                    spriteBatch.Begin();
+                    title = "Paused";
+                        stringOne = "Resume";
+                        stringTwo = "Main Menu";
+                        stringThree = "Quit";
+                        menuFont = spriteFont;
+                        startHeight = 100;
 
+                        // Draw the string twice to create a drop shadow, first colored black
+                        // and offset one pixel to the bottom right, then again in white at the
+                        // intended position. This makes text easier to read over the background.
+                        spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2) - 3,
+                            startHeight - 3), Color.Black);
+                        spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2),
+                            startHeight), Color.White);
+
+                        if (pauseMenuState == 0)
+                        {
+                            stringOneColor = Color.Green;
+                        }
+                        else if (pauseMenuState == 1)
+                        {
+                            stringTwoColor = Color.Green;
+                        }
+                        else
+                        {
+                            stringThreeColor = Color.Green;
+                        }
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y), stringOneColor);
+
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y), stringTwoColor);
+
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y), stringThreeColor);
+
+                    spriteBatch.End();
                     break;
 
                 case GameState.End:
@@ -823,7 +939,7 @@ namespace EtchTheOwl
             }
         }
 
-        private void drawMiniEtch(float percent, bool middle){
+        private void drawMiniEtch(float percent, bool middle, bool offsetPosition){
             float spriteWidth = etch.Width * etchScale;
             float spriteHeight = etch.Height * etchScale;
             
@@ -837,10 +953,18 @@ namespace EtchTheOwl
 
             if (middle)
             {
-                etchX = screenWidth / 2 - spriteWidth / 2;
+                if (offsetPosition)
+                {
+                    etchX = screenWidth / 2 - spriteWidth;
+                }
+                else
+                {
+                    etchX = screenWidth / 2;
+                }
             }
             else
             {
+                //ignores offset for singleplayer
                 etchX = screenWidth - spriteWidth;
             }
 
