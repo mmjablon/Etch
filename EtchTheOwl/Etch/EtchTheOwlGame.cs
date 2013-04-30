@@ -67,7 +67,6 @@ namespace EtchTheOwl
         private int pauseMenuState;
         private int numPauseStates = 3;
         private int endMenuState;
-        private int endPauseStates = 2;
 
         private bool fullscreen;
         private bool toggleFullscreen;
@@ -112,7 +111,7 @@ namespace EtchTheOwl
             Components.Add(modelManager);
             timer = new Stopwatch();
             timer2 = new Stopwatch();
-            this.IsMouseVisible = true;
+            this.IsMouseVisible = false;
             base.Initialize();
         }
 
@@ -304,6 +303,8 @@ namespace EtchTheOwl
                       if (settingsMenuState > 0)
                       {
                           settingsMenuState--;
+
+
                           beepUp.Play();
                       }
                   }
