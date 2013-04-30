@@ -109,7 +109,7 @@ namespace EtchTheOwl
         {
             graphicsDevice = device;
             this.camera = camera;
-            this.maxX = maxX - (int) (maxX * .4);
+            this.maxX = maxX;
             speedUp = 1;
 
             controller = Controls.Keys;
@@ -165,7 +165,7 @@ namespace EtchTheOwl
             return world.Translation.Y;
         }
 
-        public void speeds(float speedUp)
+        public void speed(float speedUp)
         {
             this.speedUp = speedUp;
         }
@@ -180,7 +180,7 @@ namespace EtchTheOwl
         {
             if (reset)
             {
-                float elapsed = speedUp*(float)gameTime.ElapsedGameTime.TotalSeconds;
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 resetTime -= elapsed;
 
                 if (ZRotation > .15 * Math.PI)
@@ -212,7 +212,7 @@ namespace EtchTheOwl
             }
             else
             {
-                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                float elapsed = speedUp * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 animationPlayer.Update(gameTime.ElapsedGameTime, true, Matrix.Identity);
 
                 GamePadState gamePadState;

@@ -1,8 +1,6 @@
 Content\Fonts\gameFont.xnb
 Content\Fonts\titleFont.xnb
 Content\Models\Ground.xnb
-Content\Models\Tree.xnb
-Content\Models\EtchAnimated.xnb
 Content\Models\untitled.xnb
 Content\Models\bush.xnb
 Content\Models\Enemy.xnb
@@ -23,3 +21,5 @@ Content\Fonts\numberFont.xnb
 Content\Audio\crunch.xnb
 Content\moon_8k_color_brim16_0.xnb
 Content\Models\Moon.xnb
+Content\Models\Tree.xnb
+Content\Models\EtchAnimated.xnb

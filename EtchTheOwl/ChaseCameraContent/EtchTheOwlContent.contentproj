@@ -59,6 +59,7 @@
       <Name>Etch</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
+      <ProcessorParameters_Scale>0.5</ProcessorParameters_Scale>
     </None>
   </ItemGroup>
   <ItemGroup>

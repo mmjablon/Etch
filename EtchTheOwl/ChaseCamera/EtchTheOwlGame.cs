@@ -51,6 +51,7 @@ namespace EtchTheOwl
         enum GameState { Start, Controls, InGame, Pause, Settings, End};
         private GameState currentGameState;
         private Stopwatch timer;
+        private Stopwatch timer2;
         private bool singlePlayer;
 
         private int mainMenuState;
@@ -97,6 +98,8 @@ namespace EtchTheOwl
             modelManager.Enabled = false;
             Components.Add(modelManager);
             timer = new Stopwatch();
+            timer2 = new Stopwatch();
+            this.IsMouseVisible = true;
             base.Initialize();
         }
 
@@ -197,6 +200,7 @@ namespace EtchTheOwl
                                 Components.Add(modelManager);
                                 currentGameState = GameState.InGame;
                                 timer.Start();
+                                timer2.Start();
                                 modelManager.etch1.controller = Controls.Keys;
                                 modelManager.etch2.controller = Controls.ControllerOne;
                             }
@@ -218,6 +222,7 @@ namespace EtchTheOwl
                                 Components.Add(modelManager);
                                 currentGameState = GameState.InGame;
                                 timer.Start();
+                                timer2.Start();
                                 modelManager.etch1.controller = Controls.ControllerOne;
                                 modelManager.etch2.controller = Controls.ControllerTwo;
                             }
@@ -294,6 +299,7 @@ namespace EtchTheOwl
                     if(currentKeyboardState.IsKeyDown(Keys.P) || currentGamePadState.IsButtonDown(Buttons.Back)){
                         currentGameState = GameState.Pause;
                         timer.Stop();
+                        timer2.Stop();
                         modelManager.Enabled = false;
                     }
 
@@ -308,7 +314,20 @@ namespace EtchTheOwl
                     }
                     else
                     {
+                        if (modelManager.finished1())
+                        {
+                            timer.Stop();
+                        }
 
+                        if (modelManager.finished1())
+                        {
+                            timer2.Stop();
+                        }
+                        if (modelManager.finished1() && modelManager.finished2())
+                        {
+                            currentGameState = GameState.End;
+                            modelManager.Enabled = false;
+                        }
                     }
                     break;
 
@@ -596,36 +615,51 @@ namespace EtchTheOwl
                     }
                     else
                     {
-                        GraphicsDevice.Viewport = modelManager.leftViewport;
-                        TimeSpan ts = timer.Elapsed;
+                        if (modelManager.finished1() && modelManager.finished2())
+                        {
 
-                        // Format and display the TimeSpan value. 
-                        string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
-                        spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
-                        float flyScale = 0.13f;
-                        float spriteWidth = fly.Width * flyScale;
-                        Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+                        }
+                        else
+                        {
+                            GraphicsDevice.Viewport = modelManager.leftViewport;
+                            TimeSpan ts = timer.Elapsed;
+                            // Format and display the TimeSpan value. 
+                            string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                            spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
+                            spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
+                            float flyScale = 0.13f;
+                            float spriteWidth = fly.Width * flyScale;
+                            Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
 
-                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
-                        spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(), 
-                            flyPos, Color.White);
+                            spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                            spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
+                                flyPos, Color.White);
 
-                        //flush the spriteBatch
-                        spriteBatch.End();
-                        spriteBatch.Begin();
-                        GraphicsDevice.Viewport = modelManager.rightViewport;
-                        flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+                            //flush the spriteBatch
+                            spriteBatch.End();
 
-                        spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
-                        spriteBatch.DrawString(numberFont, modelManager.numBugs2.ToString(),
-                            flyPos, Color.White);
+                            spriteBatch.Begin();
+
+                            TimeSpan ts2 = timer2.Elapsed;
+                            // Format and display the TimeSpan value. 
+                            string elapsedTime2 = String.Format("{0:00}:{1:00}.{2:00}", ts2.Minutes, ts2.Seconds, ts2.Milliseconds / 10);
+                            spriteBatch.DrawString(spriteFont, elapsedTime2, new Vector2(8, 8), Color.Black);
+                            spriteBatch.DrawString(spriteFont, elapsedTime2, new Vector2(10, 10), Color.White);
+
+                            GraphicsDevice.Viewport = modelManager.rightViewport;
+                            flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
+
+                            spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
+                            spriteBatch.DrawString(numberFont, modelManager.numBugs2.ToString(),
+                                flyPos, Color.White);
+                        }
 
                     }
                     spriteBatch.End();
                     break;
 
                 case GameState.Pause:
+
                     break;
 
                 case GameState.End:

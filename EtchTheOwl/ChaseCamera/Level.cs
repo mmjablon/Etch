@@ -27,7 +27,7 @@ namespace EtchTheOwl
             bushes = new List<Bush>();
             maxX = 25000;
             //1000000 is about 2-3 minutes of gameplay
-            levelEnd = 1000;
+            levelEnd = 1000000;
             //number of trees per x value
             xDensity = 8;
 

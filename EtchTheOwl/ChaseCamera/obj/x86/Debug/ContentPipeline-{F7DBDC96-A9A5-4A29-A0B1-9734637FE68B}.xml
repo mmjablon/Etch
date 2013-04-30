@@ -34,41 +34,6 @@
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\grass_0.xnb</Request>
     </Item>
     <Item>
-      <Source>Models\Tree.fbx</Source>
-      <Name>Models\Tree</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="Scale">500</Data>
-        <Data Key="RotationX">-90</Data>
-        <Data Key="RotationY">180</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Tree.xnb</Output>
-      <Time>2013-04-04T03:37:08-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Tree_0.xml</Key>
-        <Value>2013-04-25T01:00:25.300783-05:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>Models\EtchAnimated.fbx</Source>
-      <Name>Models\EtchAnimated</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>SkinnedModelProcessor</Processor>
-      <Parameters>
-        <Data Key="Scale">8</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EtchAnimated.xnb</Output>
-      <Time>2013-04-16T20:56:52.3717152-05:00</Time>
-      <Dependency>
-        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EtchAnimated_0.xml</Key>
-        <Value>2013-04-25T01:00:27.9297812-05:00</Value>
-      </Dependency>
-      <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Request>
-    </Item>
-    <Item>
       <Source>Models\untitled.fbx</Source>
       <Name>Models\untitled</Name>
       <Importer>FbxImporter</Importer>
@@ -394,6 +359,41 @@
         <Value>2013-04-29T03:54:38.1860388-05:00</Value>
       </Dependency>
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\moon_8k_color_brim16_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Tree.fbx</Source>
+      <Name>Models\Tree</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">500</Data>
+        <Data Key="RotationX">-90</Data>
+        <Data Key="RotationY">180</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\Tree.xnb</Output>
+      <Time>2013-04-04T03:37:08-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\Tree_0.xml</Key>
+        <Value>2013-04-25T01:00:25.300783-05:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\EtchAnimated.fbx</Source>
+      <Name>Models\EtchAnimated</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+      <Parameters>
+        <Data Key="Scale">8</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Models\EtchAnimated.xnb</Output>
+      <Time>2013-04-16T20:56:52.3717152-05:00</Time>
+      <Dependency>
+        <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\obj\x86\Debug\Models\EtchAnimated_0.xml</Key>
+        <Value>2013-04-25T01:00:27.9297812-05:00</Value>
+      </Dependency>
+      <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Request>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

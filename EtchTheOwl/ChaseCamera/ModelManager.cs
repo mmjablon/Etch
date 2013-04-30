@@ -30,15 +30,22 @@ namespace EtchTheOwl
 
         private BasicModel groundCurrent;
         private BasicModel groundSecondary;
+        private BasicModel groundCurrent2;
+        private BasicModel groundSecondary2;
         private BasicModel endTree;
         private BasicModel moon;
         private Boolean ground;
+        private Boolean ground2;
 
-        private float resetTime;
-        private float collisionTime;
+        private float resetTime1;
+        private float collisionTime1;
+
+        private float resetTime2;
+        private float collisionTime2;
 
         private int groundDisplacement = -131070;
         private int groundSwaps;
+        private int groundSwaps2;
         private int maxX;
 
         private bool singlePlayer;
@@ -75,6 +82,8 @@ namespace EtchTheOwl
                 camera1.FarPlaneDistance = 100000.0f;
 
                 etch1 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"), new Vector3(0,0, 10000), camera1, maxX);
+
+                etch1.speed(0.5f);
 
                 camera1.AspectRatio = (float)graphics.GraphicsDevice.Viewport.Width /
                    graphics.GraphicsDevice.Viewport.Height;
@@ -124,6 +133,10 @@ namespace EtchTheOwl
                 camera2.AspectRatio = (float)graphics.GraphicsDevice.Viewport.Width/2 /
                    graphics.GraphicsDevice.Viewport.Height;
 
+                //set up player independent variables
+                groundSwaps2 = 1;
+                ground2 = true;
+
 
                 // Perform an inital reset on the camera so that it starts at the resting
                 // position. If we don't do this, the camera will start at the origin and
@@ -133,7 +146,8 @@ namespace EtchTheOwl
                 camera2.Reset();
             }
 
-            resetTime = 0;
+            resetTime1 = 0;
+            resetTime2 = 0;
         }
 
         public int getPlayer1Bugs(){
@@ -189,7 +203,157 @@ namespace EtchTheOwl
             groundCurrent = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
             groundSecondary = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
             groundSecondary.translate(new Vector3(0, 0, groundDisplacement));
+
+            if (!singlePlayer)
+            {
+                groundCurrent2 = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
+                groundSecondary2 = new BasicModel(Game.Content.Load<Model>("Models\\Ground"), Matrix.Identity);
+                groundSecondary2.translate(new Vector3(0, 0, groundDisplacement));
+            }
         }
+
+        private void Player1Collisions(GameTime gameTime)
+        {
+            //player 1 stuff
+            collisionTime1 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            // Reset the ship on R key or right thumb stick clicked
+            if (resetTime1 > 0)
+            {
+                resetTime1 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                camera1.Reset();
+            }
+            else
+            {
+                if (collisionTime1 < 0)
+                {
+                    foreach (Tree tree in trees)
+                    {
+                        if (collisionRange(tree, etch1))
+                        {
+                            if (tree.CollidesWith(etch1))
+                            {
+                                collision.Play();
+                                resetTime1 = 1;
+                                collisionTime1 = 3;
+                                etch1.Reset();
+                                camera1.Reset();
+                            }
+                        }
+                    }
+                }
+
+                if (collisionTime1 < 0)
+                {
+                    foreach (Bush bush in bushes)
+                    {
+                        if (collisionRange(bush, etch1))
+                        {
+                            if (etch1.CollidesWith(bush) && etch1.getHeight() < 550)
+                            {
+                                collision.Play();
+                                resetTime1 = 1;
+                                collisionTime1 = 3;
+                                etch1.Reset();
+                                camera1.Reset();
+                            }
+                        }
+                    }
+                }
+
+                //iterate backwards to delete while iterating
+                for (int i = bugs.Count - 1; i >= 0; i--)
+                {
+                    Bug bug = bugs[i];
+                    if (inViewRange(bug, etch1))
+                    {
+                        bug.Update(gameTime);
+                        if (collisionRange(bug, etch1))
+                        {
+                            if (etch1.CollidesWith(bug))
+                            {
+                                numBugs1++;
+                                crunch.Play();
+                                bugs.Remove(bug);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Player2Collisions(GameTime gameTime)
+        {
+            collisionTime2 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            // Reset the ship on R key or right thumb stick clicked
+            if (resetTime2 > 0)
+            {
+                resetTime2 -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                camera2.Reset();
+            }
+            else
+            {
+                if (collisionTime2 < 0)
+                {
+                    foreach (Tree tree in trees)
+                    {
+                        if (collisionRange(tree, etch2))
+                        {
+                            if (tree.CollidesWith(etch2))
+                            {
+                                collision.Play();
+                                resetTime2 = 1;
+                                collisionTime2 = 3;
+                                etch2.Reset();
+                                camera2.Reset();
+                            }
+                        }
+                    }
+                }
+
+                if (collisionTime2 < 0)
+                {
+                    foreach (Bush bush in bushes)
+                    {
+                        if (collisionRange(bush, etch2))
+                        {
+                            if (etch2.CollidesWith(bush) && etch2.getHeight() < 550)
+                            {
+                                collision.Play();
+                                resetTime2 = 1;
+                                collisionTime2 = 3;
+                                etch2.Reset();
+                                camera2.Reset();
+                            }
+                        }
+                    }
+                }
+
+                //iterate backwards to delete while iterating
+                for (int i = bugs.Count - 1; i >= 0; i--)
+                {
+                    Bug bug = bugs[i];
+                    if (inViewRange(bug, etch2))
+                    {
+                        //make sure we dont double update
+                        if (!inViewRange(bug, etch2))
+                        {
+                            bug.Update(gameTime);
+                        }
+                        if (collisionRange(bug, etch2))
+                        {
+                            if (etch2.CollidesWith(bug))
+                            {
+                                numBugs2++;
+                                crunch.Play();
+                                bugs.Remove(bug);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         public override void Update(GameTime gameTime)
         {
@@ -206,74 +370,27 @@ namespace EtchTheOwl
             else
             {
                 // Update Etch
-                etch1.Update(gameTime);
-                camera1.Update(gameTime);
-                etch2.Update(gameTime);
-                camera2.Update(gameTime);
+                if (!finished1())
+                {
+                    etch1.Update(gameTime);
+                    camera1.Update(gameTime);
+                }
+
+                if(!finished2())
+                {
+                    etch2.Update(gameTime);
+                    camera2.Update(gameTime);
+                }
             }
-            
-            // Reset the ship on R key or right thumb stick clicked
-            if (resetTime > 0)
+
+            if (singlePlayer)
             {
-                resetTime -= (float) gameTime.ElapsedGameTime.TotalSeconds;
-                camera1.Reset();
-            }
-            else if (currentKeyboardState.IsKeyDown(Keys.R) ||
-               currentGamePadState.Buttons.RightStick == ButtonState.Pressed)
-            {
-                resetTime = 2;
-                etch1.ResetComplete();
-                camera1.Reset();
+                Player1Collisions(gameTime);
             }
             else
             {
-                foreach (Tree tree in trees)
-                {
-                    if (collisionRange(tree))
-                    {
-                        if (tree.CollidesWith(etch1))
-                        {
-                            collision.Play();
-                            resetTime = 1;
-                            etch1.Reset();
-                            camera1.Reset();
-                        }
-                    }
-                }
-
-
-                foreach (Bush bush in bushes)
-                {
-                    if (collisionRange(bush))
-                    {
-                        if (etch1.CollidesWith(bush) && etch1.getHeight() < 550)
-                        {
-                            collision.Play();
-                            resetTime = 1;
-                            etch1.Reset();
-                            camera1.Reset();
-                        }
-                    }
-                }
-
-                //iterate backwards to delete while iterating
-                for(int i = bugs.Count - 1; i >= 0; i--)
-                {
-                    Bug bug = bugs[i];
-                    if (inViewRange(bug, etch1))
-                    {
-                        bug.Update(gameTime);
-                        if (collisionRange(bug))
-                        {
-                            if (etch1.CollidesWith(bug))
-                            {
-                                numBugs1++;
-                                crunch.Play();
-                                bugs.Remove(bug);
-                            }
-                        }
-                    }
-                }
+                Player1Collisions(gameTime);
+                Player2Collisions(gameTime);
             }
 
             if (singlePlayer)
@@ -291,6 +408,19 @@ namespace EtchTheOwl
             else
             {
                 // Update the camera to chase the new target
+                //if etcch gets near the edge of one ground plane translate it
+                if (etch1.Position.Z < groundSwaps * groundDisplacement)
+                {
+                    continueGround();
+                    groundSwaps++;
+                }
+
+                //if etcch gets near the edge of one ground plane translate it
+                if (etch2.Position.Z < groundSwaps2 * groundDisplacement)
+                {
+                    continueGround2();
+                    groundSwaps2++;
+                }
                 UpdateCameraChaseTarget(camera1, etch1);
                 UpdateCameraChaseTarget(camera2, etch2);
             }
@@ -298,10 +428,10 @@ namespace EtchTheOwl
             base.Update(gameTime);
         }
 
-        private bool collisionRange(BasicModel t)
+        private bool collisionRange(BasicModel t, Etch etch)
         {
             Vector3 treePos = t.getWorld().Translation;
-            Vector3 etchPos = etch1.Position;
+            Vector3 etchPos = etch.Position;
 
             double maxZ = treePos.Z + 1000;
             double minZ = treePos.Z - 1000;
@@ -341,6 +471,20 @@ namespace EtchTheOwl
             {
                 groundSecondary.translate(new Vector3(0, 0, 2 * groundDisplacement));
                 ground = !ground;
+            }
+        }
+
+        public void continueGround2()
+        {
+            if (ground2)
+            {
+                groundCurrent2.translate(new Vector3(0, 0, 2 * groundDisplacement));
+                ground2 = !ground2;
+            }
+            else
+            {
+                groundSecondary2.translate(new Vector3(0, 0, 2 * groundDisplacement));
+                ground2 = !ground2;
             }
         }
 
@@ -461,8 +605,8 @@ namespace EtchTheOwl
                         bug.DrawModel(camera2);
                     }
                 }
-                groundCurrent.DrawModel(camera2);
-                groundSecondary.DrawModel(camera2);
+                groundCurrent2.DrawModel(camera2);
+                groundSecondary2.DrawModel(camera2);
                 endTree.DrawModel(camera2);
                 moon.DrawModel(camera2);
             }
