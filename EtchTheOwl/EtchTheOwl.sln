@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtchTheOwl", "ChaseCamera\EtchTheOwl.csproj", "{07212D28-DD9D-4E0E-A50B-CD9C04729DDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtchTheOwl", "Etch\EtchTheOwl.csproj", "{07212D28-DD9D-4E0E-A50B-CD9C04729DDB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4636C7E1-B845-4B83-B96D-64A11B8A4515} = {4636C7E1-B845-4B83-B96D-64A11B8A4515}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtchTheOwlContent", "ChaseCameraContent\EtchTheOwlContent.contentproj", "{F7DBDC96-A9A5-4A29-A0B1-9734637FE68B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtchTheOwlContent", "EtchContent\EtchTheOwlContent.contentproj", "{F7DBDC96-A9A5-4A29-A0B1-9734637FE68B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinnedModelWindows", "SkinnedModel\SkinnedModelWindows.csproj", "{0D41E29B-829F-4255-BCA5-64DC2677DA6D}"
 EndProject
