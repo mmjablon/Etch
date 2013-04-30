@@ -37,6 +37,9 @@ namespace EtchTheOwl
         private SpriteFont titleFont;
         private SpriteFont numberFont;
         private Texture2D fly;
+        float flyScale = 0.13f;
+        float etchScale = 0.2f;
+        private Texture2D etch;
 
         private KeyboardState currentKeyboardState = new KeyboardState();
         private GamePadState currentGamePadState = new GamePadState();
@@ -76,8 +79,8 @@ namespace EtchTheOwl
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 854;
+            graphics.PreferredBackBufferHeight = 480;
             fullscreen = false;
             graphics.IsFullScreen = fullscreen;
 
@@ -118,6 +121,7 @@ namespace EtchTheOwl
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.6f;
             fly = Content.Load<Texture2D>("Textures\\fly");
+            etch = Content.Load<Texture2D>("Textures\\etchPic");
             beepUp = Content.Load<SoundEffect>("Audio\\vulture");
             beepDown = Content.Load<SoundEffect>("Audio\\vulture");
         }
@@ -319,7 +323,7 @@ namespace EtchTheOwl
                             timer.Stop();
                         }
 
-                        if (modelManager.finished1())
+                        if (modelManager.finished2())
                         {
                             timer2.Stop();
                         }
@@ -605,29 +609,28 @@ namespace EtchTheOwl
                         string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
                         spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
                         spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
-                        float flyScale = 0.13f;
                         float spriteWidth = fly.Width * flyScale;
                         Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
 
                         spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
                         spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
                             flyPos, Color.White);
+                        drawMiniEtch(modelManager.percentComplete1(), false);
                     }
                     else
                     {
-                        if (modelManager.finished1() && modelManager.finished2())
-                        {
+                            drawMiniEtch(modelManager.percentComplete1(), true);
+                            drawMiniEtch(modelManager.percentComplete2(), true);
+                            spriteBatch.End();
 
-                        }
-                        else
-                        {
                             GraphicsDevice.Viewport = modelManager.leftViewport;
+
+                            spriteBatch.Begin();
                             TimeSpan ts = timer.Elapsed;
                             // Format and display the TimeSpan value. 
                             string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
                             spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
                             spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
-                            float flyScale = 0.13f;
                             float spriteWidth = fly.Width * flyScale;
                             Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
 
@@ -652,7 +655,6 @@ namespace EtchTheOwl
                             spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
                             spriteBatch.DrawString(numberFont, modelManager.numBugs2.ToString(),
                                 flyPos, Color.White);
-                        }
 
                     }
                     spriteBatch.End();
@@ -672,7 +674,6 @@ namespace EtchTheOwl
 
                         // Format and display the TimeSpan value. 
                         string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                        float flyScale = 0.13f;
                         float spriteWidth = fly.Width * flyScale;
                         Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
 
@@ -716,14 +717,60 @@ namespace EtchTheOwl
                     }
                     else
                     {
-                        GraphicsDevice.Viewport = modelManager.leftViewport;
-                        TimeSpan ts = timer.Elapsed;
+                        spriteBatch.Begin();
+                        TimeSpan tsNew = timer.Elapsed - new TimeSpan(0, 0, 5 * modelManager.numBugs1);
+                        string elapsedTimeNew = String.Format("{0:00}:{1:00}.{2:00}", tsNew.Minutes, tsNew.Seconds, tsNew.Milliseconds / 10);
+                        TimeSpan tsNew2 = timer2.Elapsed - new TimeSpan(0, 0, 5 * modelManager.numBugs2);
+                        string elapsedTimeNew2 = String.Format("{0:00}:{1:00}.{2:00}", tsNew2.Minutes, tsNew2.Seconds, tsNew2.Milliseconds / 10);
 
+                        if (tsNew < tsNew2)
+                        {
+                            title = "Player One Wins!";
+                        }
+                        else
+                        {
+                            title = "Player Two Wins!";
+                        }
+
+                        // Draw the string twice to create a drop shadow, first colored black
+                        // and offset one pixel to the bottom right, then again in white at the
+                        // intended position. This makes text easier to read over the background.
+                        spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2) - 3,
+                            startHeight - 3), Color.Black);
+                        spriteBatch.DrawString(titleFont, title, new Vector2((GraphicsDevice.Viewport.Width / 2) - (titleFont.MeasureString(title).X / 2),
+                            startHeight), Color.White);
+                        spriteBatch.End();
+
+                        //now draw the left player's screen
+                        GraphicsDevice.Viewport = modelManager.leftViewport;
+                        spriteBatch.Begin();
+
+                        TimeSpan ts = timer.Elapsed;
                         // Format and display the TimeSpan value. 
                         string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
                         spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(8, 8), Color.Black);
                         spriteBatch.DrawString(spriteFont, elapsedTime, new Vector2(10, 10), Color.White);
-                        float flyScale = 0.13f;
+
+                        stringOne = "Actual Time: " + elapsedTime;
+                        stringTwo = "Bugs: " + modelManager.numBugs1.ToString() + " (-" + modelManager.numBugs1 * 5 + " seconds)";
+                        stringThree = "Level Time: " + elapsedTimeNew;
+                        startHeight = 100;
+
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y), stringOneColor);
+
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y), stringTwoColor);
+
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y), stringThreeColor);
+
                         float spriteWidth = fly.Width * flyScale;
                         Vector2 flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
 
@@ -733,7 +780,35 @@ namespace EtchTheOwl
 
                         //flush the spriteBatch
                         spriteBatch.End();
+
                         spriteBatch.Begin();
+
+                        TimeSpan ts2 = timer2.Elapsed;
+                        // Format and display the TimeSpan value. 
+                        string elapsedTime2 = String.Format("{0:00}:{1:00}.{2:00}", ts2.Minutes, ts2.Seconds, ts2.Milliseconds / 10);
+                        spriteBatch.DrawString(spriteFont, elapsedTime2, new Vector2(8, 8), Color.Black);
+                        spriteBatch.DrawString(spriteFont, elapsedTime2, new Vector2(10, 10), Color.White);
+
+                        stringOne = "Actual Time: " + elapsedTime2;
+                        stringTwo = "Bugs: " + modelManager.numBugs2.ToString()+" (-" + modelManager.numBugs2 * 5 + " seconds)";
+                        stringThree = "Level Time: " + elapsedTimeNew2;
+                        startHeight = 100;
+
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y), stringOneColor);
+
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringTwo, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringTwo).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + menuFont.MeasureString(stringOne).Y), stringTwoColor);
+
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + 2 * menuFont.MeasureString(stringOne).Y), stringThreeColor);
+
                         GraphicsDevice.Viewport = modelManager.rightViewport;
                         flyPos = new Vector2(GraphicsDevice.Viewport.Width - spriteWidth, 0);
 
@@ -741,9 +816,38 @@ namespace EtchTheOwl
                         spriteBatch.DrawString(numberFont, modelManager.numBugs2.ToString(),
                             flyPos, Color.White);
 
+                        spriteBatch.End();
+
                     }
                     break;
             }
+        }
+
+        private void drawMiniEtch(float percent, bool middle){
+            float spriteWidth = etch.Width * etchScale;
+            float spriteHeight = etch.Height * etchScale;
+            
+            float screenHeight = GraphicsDevice.Viewport.Height;
+            float screenWidth = GraphicsDevice.Viewport.Width;
+
+            float rangeSize = screenHeight - flyScale * fly.Height - spriteHeight;
+
+            float etchX;
+            float etchY;
+
+            if (middle)
+            {
+                etchX = screenWidth / 2 - spriteWidth / 2;
+            }
+            else
+            {
+                etchX = screenWidth - spriteWidth;
+            }
+
+            etchY = (1 - percent) * rangeSize + flyScale * fly.Height;
+
+            Vector2 etchPos = new Vector2(etchX, etchY);
+            spriteBatch.Draw(etch, etchPos, null, Color.White, 0f, Vector2.Zero, etchScale, SpriteEffects.None, 0f);
         }
 
 

@@ -395,6 +395,15 @@
       </Dependency>
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\Etch_0.xnb</Request>
     </Item>
+    <Item>
+      <Source>Textures\etchPic.png</Source>
+      <Name>Textures\etchPic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCamera\bin\x86\Debug\Content\Textures\etchPic.xnb</Output>
+      <Time>2013-04-30T00:16:00.2197262-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{F7DBDC96-A9A5-4A29-A0B1-9734637FE68B}</ContentProjectGUID>

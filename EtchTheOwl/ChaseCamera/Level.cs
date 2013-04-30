@@ -27,14 +27,14 @@ namespace EtchTheOwl
             bushes = new List<Bush>();
             maxX = 25000;
             //1000000 is about 2-3 minutes of gameplay
-            levelEnd = 1000000;
+            levelEnd = 800000;
             //number of trees per x value
             xDensity = 8;
 
             //percent of trees from 0 to level end
             zDensity = 0.0007f;
 
-            bugDensity = 0.0001f;
+            bugDensity = 0.0003f;
 
             Random rand = new Random();
             for (int i = 1; i <= (float)levelEnd * zDensity; i++)

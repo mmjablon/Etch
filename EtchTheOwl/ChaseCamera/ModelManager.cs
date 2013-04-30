@@ -83,8 +83,6 @@ namespace EtchTheOwl
 
                 etch1 = new Etch(graphics.GraphicsDevice, Game.Content.Load<Model>("Models\\EtchAnimated"), new Vector3(0,0, 10000), camera1, maxX);
 
-                etch1.speed(0.5f);
-
                 camera1.AspectRatio = (float)graphics.GraphicsDevice.Viewport.Width /
                    graphics.GraphicsDevice.Viewport.Height;
 
@@ -335,7 +333,7 @@ namespace EtchTheOwl
                     if (inViewRange(bug, etch2))
                     {
                         //make sure we dont double update
-                        if (!inViewRange(bug, etch2))
+                        if (!inViewRange(bug, etch1))
                         {
                             bug.Update(gameTime);
                         }
@@ -512,6 +510,31 @@ namespace EtchTheOwl
             }
         }
 
+        public float percentComplete1()
+        {
+            if (etch1.Position.Z < -currentLevel.levelEnd)
+            {
+                return 1;
+            }
+            else
+            {
+                return etch1.Position.Z / -currentLevel.levelEnd;
+            }
+        }
+
+
+        public float percentComplete2()
+        {
+            if (etch2.Position.Z < -currentLevel.levelEnd)
+            {
+                return 1;
+            }
+            else
+            {
+                return etch2.Position.Z / -currentLevel.levelEnd;
+            }
+        }
+
         public override void Draw(GameTime gameTime)
         {
             if (singlePlayer)
@@ -611,7 +634,7 @@ namespace EtchTheOwl
                 moon.DrawModel(camera2);
             }
 
-            //GraphicsDevice.Viewport = defaultViewport;
+            GraphicsDevice.Viewport = defaultViewport;
 
             base.Draw(gameTime);
         }
