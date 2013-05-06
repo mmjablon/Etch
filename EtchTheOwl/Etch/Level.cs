@@ -20,6 +20,7 @@ namespace EtchTheOwl
         public float zDensity;
         public float bugDensity;
 
+
         public Level()
         {
             trees = new List<Tree>();

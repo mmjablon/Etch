@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Tree</Name>
     <Identity>
-      <SourceFilename>C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Tree.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Tree.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>8 0 0 0 0 -8.146034E-07 5 0 0 -8 -1.30336548E-06 0 0 0 0 1</Transform>
@@ -26,7 +26,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>default_001</Name>
       <Identity>
-        <SourceFilename>C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Tree.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Tree.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

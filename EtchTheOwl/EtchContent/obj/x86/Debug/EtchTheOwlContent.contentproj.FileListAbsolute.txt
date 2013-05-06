@@ -1,3 +1,4 @@
 C:\Users\Megan\Desktop\EtchTheOwl\ChaseCameraContent\obj\x86\Debug\EtchTheOwlContent.contentprojResolveAssemblyReference.cache
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\ChaseCameraContent\obj\x86\Debug\EtchTheOwlContent.contentprojResolveAssemblyReference.cache
 C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\obj\x86\Debug\EtchTheOwlContent.contentprojResolveAssemblyReference.cache
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\obj\x86\Debug\EtchTheOwlContent.contentprojResolveAssemblyReference.cache

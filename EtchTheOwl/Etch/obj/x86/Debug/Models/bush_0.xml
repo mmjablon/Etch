@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Tree-Ash-07m_Tree-Winter</Name>
     <Identity>
-      <SourceFilename>C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\bush.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\bush.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 -1.62920685E-07 1 0 0 -1 -1.62920685E-07 0 0 0 0 1</Transform>
@@ -26,7 +26,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Material_001</Name>
       <Identity>
-        <SourceFilename>C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\bush.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\bush.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

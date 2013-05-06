@@ -37,8 +37,10 @@ namespace EtchTheOwl
         private SpriteFont titleFont;
         private SpriteFont numberFont;
         private Texture2D fly;
+        private Texture2D vine;
         float flyScale = 0.13f;
         float etchScale = 0.15f;
+        float vineScale = 0.95f;
         private Texture2D etch;
 
         private KeyboardState currentKeyboardState = new KeyboardState();
@@ -83,11 +85,6 @@ namespace EtchTheOwl
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            //for macbook air
-            //graphics.PreferredBackBufferWidth = 854;
-            //graphics.PreferredBackBufferHeight = 480;
-
-            //for lab
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             fullscreen = false;
@@ -130,6 +127,7 @@ namespace EtchTheOwl
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.6f;
             fly = Content.Load<Texture2D>("Textures\\fly");
+            vine = Content.Load<Texture2D>("Textures\\vine");
             etch = Content.Load<Texture2D>("Textures\\etchPic");
             beepUp = Content.Load<SoundEffect>("Audio\\vulture");
             beepDown = Content.Load<SoundEffect>("Audio\\vulture");
@@ -748,12 +746,15 @@ namespace EtchTheOwl
                         spriteBatch.Draw(fly, flyPos, null, Color.White, 0f, Vector2.Zero, flyScale, SpriteEffects.None, 0f);
                         spriteBatch.DrawString(numberFont, modelManager.numBugs1.ToString(),
                             flyPos, Color.White);
+                        drawVine(false);
                         drawMiniEtch(modelManager.percentComplete1(), false, false);
                     }
                     else
                     {
+                            drawVine(true);
                             drawMiniEtch(modelManager.percentComplete1(), true, true);
                             drawMiniEtch(modelManager.percentComplete2(), true, false);
+                            
                             spriteBatch.End();
 
                             GraphicsDevice.Viewport = modelManager.leftViewport;
@@ -1042,6 +1043,28 @@ namespace EtchTheOwl
                     }
                     break;
             }
+        }
+
+        private void drawVine(bool middle){
+            float flyHeight = flyScale * fly.Height;
+            float spriteWidth = vine.Width * vineScale;
+
+            float screenHeight = GraphicsDevice.Viewport.Height;
+            float screenWidth = GraphicsDevice.Viewport.Width;
+
+            float vineX;
+
+            if (middle)
+            {
+                vineX = screenWidth / 2 - spriteWidth / 2;
+            }
+            else
+            {
+                vineX = screenWidth - spriteWidth;
+            }
+
+            Vector2 vinePos = new Vector2(vineX, flyHeight);
+            spriteBatch.Draw(vine, vinePos, null, Color.White, 0f, Vector2.Zero, vineScale, SpriteEffects.None, 0f);
         }
 
         private void drawMiniEtch(float percent, bool middle, bool offsetPosition){

@@ -222,6 +222,7 @@ namespace EtchTheOwl
             }
             else
             {
+                GamePad.SetVibration(PlayerIndex.One, 0f, 0f);
                 if (collisionTime1 < 0)
                 {
                     foreach (Tree tree in trees)
@@ -231,6 +232,7 @@ namespace EtchTheOwl
                             if (tree.CollidesWith(etch1))
                             {
                                 collision.Play();
+                                GamePad.SetVibration(PlayerIndex.One, 0.5f, 0.5f);
                                 resetTime1 = 1;
                                 collisionTime1 = 3;
                                 etch1.Reset();
@@ -249,6 +251,7 @@ namespace EtchTheOwl
                             if (etch1.CollidesWith(bush) && etch1.getHeight() < 550)
                             {
                                 collision.Play();
+                                GamePad.SetVibration(PlayerIndex.One, 0.5f, 0.5f);
                                 resetTime1 = 1;
                                 collisionTime1 = 3;
                                 etch1.Reset();
@@ -290,6 +293,7 @@ namespace EtchTheOwl
             }
             else
             {
+                GamePad.SetVibration(PlayerIndex.One, 0f, 0f);
                 if (collisionTime2 < 0)
                 {
                     foreach (Tree tree in trees)
@@ -299,6 +303,7 @@ namespace EtchTheOwl
                             if (tree.CollidesWith(etch2))
                             {
                                 collision.Play();
+                                GamePad.SetVibration(PlayerIndex.Two, 0.5f, 0.5f);
                                 resetTime2 = 1;
                                 collisionTime2 = 3;
                                 etch2.Reset();
@@ -317,6 +322,7 @@ namespace EtchTheOwl
                             if (etch2.CollidesWith(bush) && etch2.getHeight() < 550)
                             {
                                 collision.Play();
+                                GamePad.SetVibration(PlayerIndex.Two, 0.5f, 0.5f);
                                 resetTime2 = 1;
                                 collisionTime2 = 3;
                                 etch2.Reset();

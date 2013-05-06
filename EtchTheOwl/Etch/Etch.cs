@@ -99,6 +99,8 @@ namespace EtchTheOwl
 
         public Controls controller;
         public float speedUp;
+        float maxSpeedUp = 1.0f;
+        bool inverted;
 
         #endregion
 
@@ -131,11 +133,20 @@ namespace EtchTheOwl
             reset = false;
             resetTime = 0;
             shakeDirection = true;
+            inverted = false;
             ResetComplete();
 
             Position = new Vector3(position.X, MinimumAltitude, position.Z);
             world.Translation = Position;
             rotateAlongZ(-ZRotation);
+        }
+
+        public void invertControls(){
+            inverted = true;
+        }
+
+        public void uninvertControls(){
+            inverted = false;
         }
 
         public void Reset()
@@ -212,8 +223,6 @@ namespace EtchTheOwl
             }
             else
             {
-                float elapsed = speedUp * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                animationPlayer.Update(gameTime.ElapsedGameTime, true, Matrix.Identity);
 
                 GamePadState gamePadState;
                 bool moveLeft = false;
@@ -247,9 +256,15 @@ namespace EtchTheOwl
                             if (keyboardState.IsKeyDown(Keys.Space))
                                 thrust = true;
                             if (keyboardState.IsKeyDown(Keys.W))
-                                moveUp = true;
+                            {
+                                moveUp = inverted ? false : true;
+                                moveDown = inverted ? true : false;
+                            }
                             if (keyboardState.IsKeyDown(Keys.S))
-                                moveDown = true;
+                            {
+                                moveUp = inverted ? true : false;
+                                moveDown = inverted ? false : true;
+                            }
                         }
 
                         break;
@@ -266,7 +281,13 @@ namespace EtchTheOwl
                             if (gamePadState.Buttons.A == ButtonState.Pressed)
                                 jump = true;
                             if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
+                            {
                                 thrust = true;
+                                if (gamePadState.Triggers.Right > 0)
+                                    speedUp = maxSpeedUp * gamePadState.Triggers.Right;
+                                else
+                                    speedUp = 1.0f;
+                            }
                         }
                         else
                         {
@@ -275,11 +296,23 @@ namespace EtchTheOwl
                             if (gamePadState.ThumbSticks.Left.X > 0)
                                 moveRight = true;
                             if (gamePadState.Triggers.Right > 0 || gamePadState.Buttons.A == ButtonState.Pressed)
+                            {
                                 thrust = true;
+                                if (gamePadState.Triggers.Right > 0)
+                                    speedUp = maxSpeedUp * gamePadState.Triggers.Right;
+                                else
+                                    speedUp = 1.0f;
+                            }
                             if (gamePadState.ThumbSticks.Left.Y > 0)
-                                moveUp = true;
+                            {
+                                moveUp = inverted ? false : true;
+                                moveDown = inverted ? true : false;
+                            }
                             if (gamePadState.ThumbSticks.Left.Y < 0)
-                                moveDown = true;
+                            {
+                                moveUp = inverted ? true : false;
+                                moveDown = inverted ? false : true;
+                            }
                         }
 
                         break;
@@ -295,7 +328,13 @@ namespace EtchTheOwl
                             if (gamePadState.Buttons.A == ButtonState.Pressed)
                                 jump = true;
                             if (gamePadState.Triggers.Right > 0 || gamePadState.ThumbSticks.Left.Y > 0)
+                            {
                                 thrust = true;
+                                if (gamePadState.Triggers.Right > 0)
+                                {
+                                    speedUp = maxSpeedUp * gamePadState.Triggers.Right;
+                                }
+                            }
                         }
                         else
                         {
@@ -304,15 +343,34 @@ namespace EtchTheOwl
                             if (gamePadState.ThumbSticks.Left.X > 0)
                                 moveRight = true;
                             if (gamePadState.Triggers.Right > 0 || gamePadState.Buttons.A == ButtonState.Pressed)
+                            {
                                 thrust = true;
+                                if (gamePadState.Triggers.Right > 0)
+                                {
+                                    speedUp = maxSpeedUp * gamePadState.Triggers.Right;
+                                }
+                                else
+                                {
+                                    speedUp = 1.0f;
+                                }
+                            }
                             if (gamePadState.ThumbSticks.Left.Y > 0)
-                                moveUp = true;
+                            {
+                                moveUp = inverted ? false : true;
+                                moveDown = inverted ? true : false;
+                            }
                             if (gamePadState.ThumbSticks.Left.Y < 0)
-                                moveDown = true;
+                            {
+                                moveUp = inverted ? true : false;
+                                moveDown = inverted ? false : true;
+                            }
                         }
 
                         break;
                 }
+
+                float elapsed = speedUp * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                animationPlayer.Update(gameTime.ElapsedGameTime, true, Matrix.Identity);
 
                 // Determine rotation amount from input
                 if (moveLeft)
@@ -324,6 +382,10 @@ namespace EtchTheOwl
                     float newX = Position.X - HorizontalVelocity * elapsed;
                     if (newX > -maxX){
                         Position.X = newX;
+                    }
+                    else
+                    {
+                        speedUp = 1.0f;
                     }
                 }
                 if (moveRight)
