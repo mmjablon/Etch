@@ -65,13 +65,15 @@ namespace EtchTheOwl
         private int controlMenuState;
         private int numControlStates = 3;
         private int settingsMenuState;
-        private int numSettingsStates = 3;
+        private int numSettingsStates = 4;
         private int pauseMenuState;
         private int numPauseStates = 3;
         private int endMenuState;
 
         private bool fullscreen;
         private bool toggleFullscreen;
+        private bool invertControls1;
+        private bool invertControls2;
 
         #endregion
 
@@ -84,6 +86,8 @@ namespace EtchTheOwl
             
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            invertControls1 = false;
+            invertControls2 = false;
 
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
@@ -277,7 +281,13 @@ namespace EtchTheOwl
                         }
                         else if (settingsMenuState == 1)
                         {
-                            
+                            invertControls1 = !invertControls1;
+                            modelManager.etch1.inverted = (invertControls1? true : false);
+                        }
+                        else if (settingsMenuState == 2)
+                        {
+                            invertControls2 = !invertControls2;
+                            modelManager.etch2.inverted = (invertControls1 ? true : false);
                         }
                         else
                         {
@@ -301,8 +311,6 @@ namespace EtchTheOwl
                       if (settingsMenuState > 0)
                       {
                           settingsMenuState--;
-
-
                           beepUp.Play();
                       }
                   }
@@ -681,15 +689,12 @@ namespace EtchTheOwl
 
                      title = "Settings";
 
-                        if (fullscreen)
-                            stringOne = "Fullscreen: On";
-                        else
-                            stringOne = "Fullscreen: Off";
-
-                        stringTwo = "--";
-                        stringThree = "Back";
-                        menuFont = spriteFont;
-                        startHeight = 100;
+                     stringOne = "Fullscreen: " + (fullscreen ? "On" : "Off");
+                     stringTwo = "Player 1 - Invert Up/Down: " + (invertControls1 ? "On" : "Off");
+                     stringThree = "Player 2 - Invert Up/Down: " + (invertControls2 ? "On" : "Off");
+                     stringFour = "Back";
+                     menuFont = spriteFont;
+                     startHeight = 100;
 
                     // Draw the string twice to create a drop shadow, first colored black
                     // and offset one pixel to the bottom right, then again in white at the
@@ -707,9 +712,13 @@ namespace EtchTheOwl
                     {
                         stringTwoColor = Color.Green;
                     }
-                    else
+                    else if (settingsMenuState == 2)
                     {
                         stringThreeColor = Color.Green;
+                    }
+                    else
+                    {
+                        stringFourColor = Color.Green;
                     }
                     spriteBatch.DrawString(menuFont, stringOne, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringOne).X / 2) - 2,
                         startHeight + titleFont.MeasureString(title).Y - 2), Color.Black);
@@ -725,6 +734,11 @@ namespace EtchTheOwl
                         startHeight + titleFont.MeasureString(title).Y + 2 *  menuFont.MeasureString(stringOne).Y - 2), Color.Black);
                     spriteBatch.DrawString(menuFont, stringThree, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringThree).X / 2),
                         startHeight + titleFont.MeasureString(title).Y + 2* menuFont.MeasureString(stringOne).Y), stringThreeColor);
+
+                                            spriteBatch.DrawString(menuFont, stringFour, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringFour).X / 2) - 2,
+                            startHeight + titleFont.MeasureString(title).Y + 3 * menuFont.MeasureString(stringOne).Y - 2), Color.Black);
+                        spriteBatch.DrawString(menuFont, stringFour, new Vector2((GraphicsDevice.Viewport.Width / 2) - (menuFont.MeasureString(stringFour).X / 2),
+                            startHeight + titleFont.MeasureString(title).Y + 3 * menuFont.MeasureString(stringOne).Y), stringFourColor);
 
                     spriteBatch.End();
                     break;

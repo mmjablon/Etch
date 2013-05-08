@@ -28,79 +28,78 @@ namespace EtchTheOwl
         private const float MinimumAltitude = 350.0f;
         private const float MaximumAltitude = 2000.0f;
 
-        /// <summary>
-        /// A reference to the graphics device used to access the viewport for touch input.
-        /// </summary>
+        // A reference to the graphics device used to access the viewport for touch input.
         private GraphicsDevice graphicsDevice;
 
-        /// <summary>
-        /// Location of etch in world space.
-        /// </summary>
+        // Location of etch in world space.
         public Vector3 Position;
 
-        /// <summary>
-        /// Direction etch is facing.
-        /// </summary>
+        // Direction etch is facing.
         public Vector3 Direction;
 
-        /// <summary>
-        /// etch's up vector.
-        /// </summary>
+        // etch's up vector.
         public Vector3 Up;
 
         private Vector3 right;
-        /// <summary>
-        /// etch's right vector.
-        /// </summary>
+        // etch's right vector.
         public Vector3 Right
         {
             get { return right; }
         }
 
-        /// <summary>
-        /// Full speed at which etch can rotate; measured in radians per second.
-        /// </summary>
+        // Full speed at which etch can rotate; measured in radians per second.
         private const float RotationRate = 1.5f;
 
-        /// <summary>
-        /// Mass of etch.
-        /// </summary>
+        // Mass of etch.
         private const float Mass = 5.0f;
 
-        /// <summary>
-        /// Maximum force that can be applied along the etch's direction.
-        /// </summary>
+        // Maximum force that can be applied along the etch's direction.
         private const float ThrustForce = 24000.0f;
 
-        /// <summary>
-        /// Velocity scalar to approximate drag.
-        /// </summary>
+        // Velocity scalar to approximate drag.
         private const float DragFactor = 0.99f;
 
-        /// <summary>
-        /// Current etch velocity.
-        /// </summary>
+        // Current etch velocity.
         public Vector3 Velocity;
 
+        //speed at which etch moves left to right
         public float HorizontalVelocity = 2000.0f;
 
-        private AnimationPlayer animationPlayer;
-        private AnimationClip startClip;
+        //Increase all of etches movement by a factor
+        public float speedUp;
 
-        private Boolean reset;
-        private double resetTime;
-        private bool shakeDirection;
+        //maximum speed up and down, used when right trigger is used for variable speed
+        float maxSpeedUp = 1.0f;
 
-        private ChaseCamera camera;
-
+        //The furthest etch can go from left to right
         private int maxX;
 
-        private bool jumpOn = false;
+        //etch's flying animation
+        private AnimationPlayer animationPlayer;
 
+        //the starting clip for etch
+        private AnimationClip startClip;
+
+        //if etch is currently in a reset
+        private Boolean reset;
+
+        //time until etch can move after reset
+        private double resetTime;
+
+        //animation for when etch hits a tree
+        private bool shakeDirection;
+
+        //The camera chasing this etch
+        private ChaseCamera camera;
+
+        //Determines if etch can move up or down, or simply jumps
+        private bool jumpOn = false;
+        
+        //Etch's controller type
         public Controls controller;
-        public float speedUp;
-        float maxSpeedUp = 1.0f;
-        bool inverted;
+
+        //If etch's up and down controls are inverted
+        public bool inverted;
 
         #endregion
 
@@ -139,14 +138,6 @@ namespace EtchTheOwl
             Position = new Vector3(position.X, MinimumAltitude, position.Z);
             world.Translation = Position;
             rotateAlongZ(-ZRotation);
-        }
-
-        public void invertControls(){
-            inverted = true;
-        }
-
-        public void uninvertControls(){
-            inverted = false;
         }
 
         public void Reset()
