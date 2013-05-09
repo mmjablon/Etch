@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Moon.fbx</SourceFilename>
+      <SourceFilename>C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Moon.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -32,7 +32,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Moon</Name>
       <Identity>
-        <SourceFilename>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Moon.fbx</SourceFilename>
+        <SourceFilename>C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\EtchContent\Models\Moon.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -53,6 +53,6 @@
     </Resource>
   </Resources>
   <ExternalReferences>
-    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\FBX\86781E8E\Moon.fbm\moon_8k_color_brim16.jpg</ExternalReference>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\FBX\E7FA1FD6\Moon.fbm\moon_8k_color_brim16.jpg</ExternalReference>
   </ExternalReferences>
 </XnaContent>

@@ -293,7 +293,7 @@ namespace EtchTheOwl
             }
             else
             {
-                GamePad.SetVibration(PlayerIndex.One, 0f, 0f);
+                GamePad.SetVibration(PlayerIndex.Two, 0f, 0f);
                 if (collisionTime2 < 0)
                 {
                     foreach (Tree tree in trees)

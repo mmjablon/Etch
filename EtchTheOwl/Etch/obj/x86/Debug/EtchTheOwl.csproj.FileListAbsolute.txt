@@ -145,3 +145,4 @@ C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Microsoft.Xna
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\EtchTheOwl.exe
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\EtchTheOwl.pdb
 C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\vine.xnb
+C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\vine.xnb
