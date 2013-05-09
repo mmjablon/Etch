@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Fonts\gameFont.xnb</Output>
-      <Time>2013-05-01T22:10:21.2264121-05:00</Time>
+      <Time>2013-05-08T17:26:09.4499979-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\titleFont.spritefont</Source>
@@ -17,7 +17,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Fonts\titleFont.xnb</Output>
-      <Time>2013-05-01T22:10:21.2110233-05:00</Time>
+      <Time>2013-05-08T17:26:09.4518363-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\numberFont.spritefont</Source>
@@ -26,7 +26,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Fonts\numberFont.xnb</Output>
-      <Time>2013-05-01T22:10:21.2110233-05:00</Time>
+      <Time>2013-05-08T17:26:09.4508362-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Ground.x</Source>
@@ -35,10 +35,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\Ground.xnb</Output>
-      <Time>2013-05-01T22:10:21.0725756-05:00</Time>
+      <Time>2013-05-08T17:26:09.5278124-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Ground_0.xml</Key>
-        <Value>2013-05-01T22:31:05.8237572-05:00</Value>
+        <Value>2013-05-08T17:54:19.982184-05:00</Value>
       </Dependency>
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\grass_0.xnb</Request>
     </Item>
@@ -53,10 +53,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\FlyRotated.xnb</Output>
-      <Time>2013-05-01T22:10:21.0879498-05:00</Time>
+      <Time>2013-05-08T17:26:09.5208299-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\FlyRotated_0.xml</Key>
-        <Value>2013-05-01T22:31:06.5751712-05:00</Value>
+        <Value>2013-05-08T17:54:21.6425022-05:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -69,10 +69,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\EndTree.xnb</Output>
-      <Time>2013-05-01T22:10:21.2110233-05:00</Time>
+      <Time>2013-05-08T17:26:09.454956-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\EndTree_0.xml</Key>
-        <Value>2013-05-01T22:31:06.7791666-05:00</Value>
+        <Value>2013-05-08T17:54:22.0725779-05:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -87,10 +87,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\Tree.xnb</Output>
-      <Time>2013-05-01T22:10:21.0564753-05:00</Time>
+      <Time>2013-05-08T17:26:09.5391799-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Tree_0.xml</Key>
-        <Value>2013-05-01T22:31:06.855167-05:00</Value>
+        <Value>2013-05-08T17:54:22.132589-05:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -103,10 +103,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\EtchAnimated.xnb</Output>
-      <Time>2013-05-01T22:10:21.1648768-05:00</Time>
+      <Time>2013-05-08T17:26:09.4819121-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\EtchAnimated_0.xml</Key>
-        <Value>2013-05-01T22:31:08.6031144-05:00</Value>
+        <Value>2013-05-08T17:54:23.8431074-05:00</Value>
       </Dependency>
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\Etch_0.xnb</Request>
     </Item>
@@ -121,10 +121,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\untitled.xnb</Output>
-      <Time>2013-05-01T22:10:20.7890669-05:00</Time>
+      <Time>2013-05-08T17:26:09.9336809-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\untitled_0.xml</Key>
-        <Value>2013-05-01T22:31:11.1161878-05:00</Value>
+        <Value>2013-05-08T17:54:26.8639965-05:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -138,10 +138,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\bush.xnb</Output>
-      <Time>2013-05-01T22:10:20.948985-05:00</Time>
+      <Time>2013-05-08T17:26:09.7427404-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\bush_0.xml</Key>
-        <Value>2013-05-01T22:31:13.3701695-05:00</Value>
+        <Value>2013-05-08T17:54:28.7840599-05:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -155,10 +155,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\Enemy.xnb</Output>
-      <Time>2013-05-01T22:10:21.1956426-05:00</Time>
+      <Time>2013-05-08T17:26:09.4628639-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Enemy_0.xml</Key>
-        <Value>2013-05-01T22:31:13.8281809-05:00</Value>
+        <Value>2013-05-08T17:54:29.1698718-05:00</Value>
       </Dependency>
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\Crepusculo_0.xnb</Request>
     </Item>
@@ -174,10 +174,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\Fly.xnb</Output>
-      <Time>2013-05-01T22:10:21.1187208-05:00</Time>
+      <Time>2013-05-08T17:26:09.5018408-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Fly_0.xml</Key>
-        <Value>2013-05-01T22:31:14.6351722-05:00</Value>
+        <Value>2013-05-08T17:54:29.9998948-05:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -190,10 +190,10 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Models\Moon.xnb</Output>
-      <Time>2013-05-01T22:10:21.0725756-05:00</Time>
+      <Time>2013-05-08T17:26:09.537822-05:00</Time>
       <Dependency>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Moon_0.xml</Key>
-        <Value>2013-05-01T22:31:14.9121713-05:00</Value>
+        <Value>2013-05-08T17:54:30.9919817-05:00</Value>
       </Dependency>
       <Request>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\moon_8k_color_brim16_0.xnb</Request>
     </Item>
@@ -205,7 +205,7 @@
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\Departure.xnb</Output>
       <Extra>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\Departure.wma</Extra>
-      <Time>2013-05-01T22:10:21.4597302-05:00</Time>
+      <Time>2013-05-08T17:26:09.4348441-05:00</Time>
     </Item>
     <Item>
       <Source>Audio\wind.wav</Source>
@@ -214,7 +214,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\wind.xnb</Output>
-      <Time>2013-05-01T22:10:21.2264121-05:00</Time>
+      <Time>2013-05-08T17:26:09.4479159-05:00</Time>
     </Item>
     <Item>
       <Source>Audio\vulture.wav</Source>
@@ -223,7 +223,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\vulture.xnb</Output>
-      <Time>2013-05-01T22:10:21.2264121-05:00</Time>
+      <Time>2013-05-08T17:26:09.4409967-05:00</Time>
     </Item>
     <Item>
       <Source>Audio\hawk.wav</Source>
@@ -232,7 +232,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\hawk.xnb</Output>
-      <Time>2013-05-01T22:10:21.2417966-05:00</Time>
+      <Time>2013-05-08T17:26:09.4399182-05:00</Time>
     </Item>
     <Item>
       <Source>Audio\owl.wav</Source>
@@ -241,7 +241,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\owl.xnb</Output>
-      <Time>2013-05-01T22:10:21.2417966-05:00</Time>
+      <Time>2013-05-08T17:26:09.4409967-05:00</Time>
     </Item>
     <Item>
       <Source>Audio\crunch.wav</Source>
@@ -250,7 +250,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Audio\crunch.xnb</Output>
-      <Time>2013-05-01T22:10:21.2417966-05:00</Time>
+      <Time>2013-05-08T17:26:09.4378367-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\fly.png</Source>
@@ -259,7 +259,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\fly.xnb</Output>
-      <Time>2013-05-01T22:10:20.6987975-05:00</Time>
+      <Time>2013-05-08T17:26:10.1806763-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\etchPic.png</Source>
@@ -268,14 +268,23 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\etchPic.xnb</Output>
-      <Time>2013-05-01T22:10:20.6987975-05:00</Time>
+      <Time>2013-05-08T17:26:10.1800852-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\vine.png</Source>
+      <Name>Textures\vine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\vine.xnb</Output>
+      <Time>2013-05-08T17:26:10.1847319-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Ground.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Ground_0.xml</Output>
-      <Time>2013-05-01T22:10:21.0725756-05:00</Time>
+      <Time>2013-05-08T17:26:09.5278124-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\grass.bmp</Source>
@@ -291,35 +300,35 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\grass_0.xnb</Output>
-      <Time>2013-05-01T22:10:20.6987975-05:00</Time>
+      <Time>2013-05-08T17:26:10.1826864-05:00</Time>
     </Item>
     <Item>
       <Source>Models\FlyRotated.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\FlyRotated_0.xml</Output>
-      <Time>2013-05-01T22:10:21.0879498-05:00</Time>
+      <Time>2013-05-08T17:26:09.5208299-05:00</Time>
     </Item>
     <Item>
       <Source>Models\EndTree.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\EndTree_0.xml</Output>
-      <Time>2013-05-01T22:10:21.2110233-05:00</Time>
+      <Time>2013-05-08T17:26:09.454956-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Tree.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Tree_0.xml</Output>
-      <Time>2013-05-01T22:10:21.0564753-05:00</Time>
+      <Time>2013-05-08T17:26:09.5391799-05:00</Time>
     </Item>
     <Item>
       <Source>Models\EtchAnimated.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\EtchAnimated_0.xml</Output>
-      <Time>2013-05-01T22:10:21.1648768-05:00</Time>
+      <Time>2013-05-08T17:26:09.4819121-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\Etch.png</Source>
@@ -335,28 +344,28 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\Etch_0.xnb</Output>
-      <Time>2013-05-01T22:10:20.6987975-05:00</Time>
+      <Time>2013-05-08T17:26:10.1427651-05:00</Time>
     </Item>
     <Item>
       <Source>Models\untitled.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\untitled_0.xml</Output>
-      <Time>2013-05-01T22:10:20.7890669-05:00</Time>
+      <Time>2013-05-08T17:26:09.9336809-05:00</Time>
     </Item>
     <Item>
       <Source>Models\bush.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\bush_0.xml</Output>
-      <Time>2013-05-01T22:10:20.948985-05:00</Time>
+      <Time>2013-05-08T17:26:09.7427404-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Enemy.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Enemy_0.xml</Output>
-      <Time>2013-05-01T22:10:21.1956426-05:00</Time>
+      <Time>2013-05-08T17:26:09.4628639-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\Crepusculo.png</Source>
@@ -372,21 +381,21 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\Crepusculo_0.xnb</Output>
-      <Time>2013-05-01T22:10:20.7187155-05:00</Time>
+      <Time>2013-05-08T17:26:10.0416606-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Fly.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Fly_0.xml</Output>
-      <Time>2013-05-01T22:10:21.1187208-05:00</Time>
+      <Time>2013-05-08T17:26:09.5018408-05:00</Time>
     </Item>
     <Item>
       <Source>Models\Moon.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\Models\Moon_0.xml</Output>
-      <Time>2013-05-01T22:10:21.0725756-05:00</Time>
+      <Time>2013-05-08T17:26:09.537822-05:00</Time>
     </Item>
     <Item>
       <Source>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\obj\x86\Debug\FBX\86781E8E\Moon.fbm\moon_8k_color_brim16.jpg</Source>
@@ -402,16 +411,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\moon_8k_color_brim16_0.xnb</Output>
-      <Time>2013-05-01T22:31:14.7071731-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\vine.png</Source>
-      <Name>Textures\vine</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\Etch\bin\x86\Debug\Content\Textures\vine.xnb</Output>
-      <Time>2013-05-02T01:10:39.3183502-05:00</Time>
+      <Time>2013-05-08T17:54:30.6374244-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -428,35 +428,35 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll</Key>
-        <Value>2013-05-01T22:10:18.3722294-05:00</Value>
+        <Value>2013-05-08T17:54:11.9712546-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2011-09-01T19:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2011-09-01T19:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2011-09-01T19:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2011-09-01T19:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2011-09-01T19:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2011-09-01T19:22:30-05:00</Value>
+        <Value>2011-09-01T16:22:30-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-02-03T18:11:49.6252682-06:00</Value>
+        <Value>2013-04-03T11:57:09.7183929-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

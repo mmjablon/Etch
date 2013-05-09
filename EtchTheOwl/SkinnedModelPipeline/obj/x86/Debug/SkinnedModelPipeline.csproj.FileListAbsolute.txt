@@ -19,3 +19,10 @@ C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\
 C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojResolveAssemblyReference.cache
 C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
 C:\Users\mmjablon\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.dll
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\bin\x86\Debug\SkinnedModel.pdb
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojResolveAssemblyReference.cache
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
+C:\Users\Megan\Documents\GitHub\Etch\EtchTheOwl\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb

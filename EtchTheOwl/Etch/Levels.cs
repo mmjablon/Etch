@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EtchTheOwl
 {
-    class Levels
+    static class Levels
     {
         public static Level getLevel(int num)
         {
